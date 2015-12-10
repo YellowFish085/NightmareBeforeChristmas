@@ -15,11 +15,12 @@ find_package(ASSIMP REQUIRED)
 # set(OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so.1)
 # set(ASSIMP_LIBRARIES ${CMAKE_SOURCE_DIR}/assimp/lib/libassimp.so)
 
-include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} ${ASSIMP_INCLUDE_DIR} glimac/include third-party/include)
+include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} ${ASSIMP_INCLUDE_DIR} glimac/include projet/include third-party/include)
 
-set(ALL_LIBRARIES glimac ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY} ${ASSIMP_LIBRARIES})
+set(ALL_LIBRARIES glimac projet ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY} ${ASSIMP_LIBRARIES})
 
 add_subdirectory(glimac)
+add_subdirectory(projet)
 
 file(GLOB DEV_DIRECTORIES "dev*")
 
