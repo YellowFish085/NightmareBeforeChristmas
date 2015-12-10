@@ -19,8 +19,8 @@ set(ALL_LIBRARIES glimac ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
 
 add_subdirectory(glimac)
 
-file(GLOB TP_DIRECTORIES "TP*")
+file(GLOB DEV_DIRECTORIES "dev*")
 
-foreach(TP ${TP_DIRECTORIES})
-    add_subdirectory(${TP})
+foreach(DEV ${DEV_DIRECTORIES})
+    add_subdirectory(${DEV})
 endforeach()
