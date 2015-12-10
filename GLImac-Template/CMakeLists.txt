@@ -12,10 +12,11 @@ find_package(GLEW REQUIRED)
 
 # Pour gérer un bug a la fac, a supprimer sur machine perso:
 # set(OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so.1)
+set(ASSIMP_LIBRARY ${CMAKE_SOURCE_DIR}/assimp/lib/libassimp.so.3)
 
-include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include)
+include_directories(${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR} ${GLEW_INCLUDE_DIR} glimac/include third-party/include assimp/include)
 
-set(ALL_LIBRARIES glimac ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY})
+set(ALL_LIBRARIES glimac ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRARY} ${ASSIMP_LIBRARY})
 
 add_subdirectory(glimac)
 
