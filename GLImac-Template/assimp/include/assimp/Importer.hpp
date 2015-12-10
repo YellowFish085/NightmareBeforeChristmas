@@ -114,11 +114,6 @@ namespace Assimp    {
 * threads for loading, each thread should maintain its own Importer instance.
 */
 class ASSIMP_API Importer   {
-public:
-    /**
-     *  @brief The upper limit for hints.
-     */
-    static const unsigned int MaxLenHint = 200; 
 
 public:
 

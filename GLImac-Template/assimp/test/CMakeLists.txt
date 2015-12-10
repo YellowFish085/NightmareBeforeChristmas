@@ -28,7 +28,6 @@ SET( TEST_SRCS
   unit/utJoinVertices.cpp
   unit/utLimitBoneWeights.cpp
   unit/utMaterialSystem.cpp
-  unit/utMatrix4x4.cpp
   unit/utPretransformVertices.cpp
   unit/utRemoveComments.cpp
   unit/utRemoveComponent.cpp

@@ -562,19 +562,6 @@ ADD_ASSIMP_IMPORTER(X
   XFileExporter.cpp
 )
 
-ADD_ASSIMP_IMPORTER(GLTF
-  glTFAsset.h
-  glTFAsset.inl
-  glTFAssetWriter.h
-  glTFAssetWriter.inl
-
-  glTFImporter.cpp
-  glTFImporter.h
-  
-  glTFExporter.h
-  glTFExporter.cpp
-)
-
 SET( Step_SRCS
   StepExporter.h
   StepExporter.cpp
@@ -656,8 +643,6 @@ SET ( openddl_parser_SRCS
   ../contrib/openddlparser/include/openddlparser/Value.h
 )
 SOURCE_GROUP( openddl_parser FILES ${openddl_parser_SRCS})
-
-INCLUDE_DIRECTORIES( "../contrib/rapidjson/include" )
 
 # VC2010 fixes
 if(MSVC10)
@@ -784,7 +769,7 @@ INSTALL( TARGETS assimp
 INSTALL( FILES ${PUBLIC_HEADERS} DESTINATION ${ASSIMP_INCLUDE_INSTALL_DIR}/assimp COMPONENT assimp-dev)
 INSTALL( FILES ${COMPILER_HEADERS} DESTINATION ${ASSIMP_INCLUDE_INSTALL_DIR}/assimp/Compiler COMPONENT assimp-dev)
 if (ASSIMP_ANDROID_JNIIOSYSTEM)
-  INSTALL(FILES ${HEADER_PATH}/${ASSIMP_ANDROID_JNIIOSYSTEM_PATH}/AndroidJNIIOSystem.h
+  INSTALL(FILES ${HEADER_PATH}/../${ASSIMP_ANDROID_JNIIOSYSTEM_PATH}/AndroidJNIIOSystem.h
     DESTINATION ${ASSIMP_INCLUDE_INSTALL_DIR}
     COMPONENT assimp-dev)
 endif(ASSIMP_ANDROID_JNIIOSYSTEM)

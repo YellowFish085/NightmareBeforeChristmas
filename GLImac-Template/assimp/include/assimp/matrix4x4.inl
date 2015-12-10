@@ -238,22 +238,16 @@ inline aiMatrix4x4t<TReal>& aiMatrix4x4t<TReal>::Inverse()
 
 // ----------------------------------------------------------------------------------------
 template <typename TReal>
-inline TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) {
-    if (p_iIndex > 3) {
-        return NULL;
-    }
-
+inline TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex)
+{
     // XXX this is UB. Has been for years. The fact that it works now does not make it better.
     return &this->a1 + p_iIndex * 4;
 }
 
 // ----------------------------------------------------------------------------------------
 template <typename TReal>
-inline const TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) const {
-    if (p_iIndex > 3) {
-        return NULL;
-    }
-
+inline const TReal* aiMatrix4x4t<TReal>::operator[](unsigned int p_iIndex) const
+{
     // XXX same
     return &this->a1 + p_iIndex * 4;
 }
