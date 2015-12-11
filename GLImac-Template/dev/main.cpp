@@ -2,9 +2,13 @@
 #include <GL/glew.h>
 #include <iostream>
 
+#include <projet/scene.hpp>
+
 using namespace glimac;
 
 int main(int argc, char** argv) {
+    Projet::Scene* scene = new Projet::Scene( "k" );
+    
     // Initialize SDL and open a window
     SDLWindowManager windowManager(800, 600, "GLImac");
 
