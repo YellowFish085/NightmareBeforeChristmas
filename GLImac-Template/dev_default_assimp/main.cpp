@@ -25,8 +25,8 @@ int main(int argc, char** argv) {
      *********************************/
 
     Projet::Mesh* mesh = new Projet::Mesh();
-    mesh->LoadMesh( "Content/box.obj" );
-
+    mesh->LoadMesh( "Content/monkey.obj" );
+    mesh->Render();
 
     // Application loop:
     bool done = false;
