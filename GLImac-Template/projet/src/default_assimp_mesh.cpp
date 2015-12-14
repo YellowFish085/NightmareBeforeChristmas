@@ -175,22 +175,19 @@ namespace Projet
 	 **/
 	bool Mesh::InitMaterials(const aiScene* pScene, const char* filename)
 	{
-		// Extract the directory part from the file name
-		std::string::size_type slashIndex = std::string(filename).find_last_of("/");
-		std::string dir;
-
-		if (slashIndex == std::string::npos) {
-			dir = ".";
-		}
-		else if (slashIndex == 0) {
-			dir = "/";
-		}
-		else {
-			dir = std::string(filename).substr(0, slashIndex);
-		}
-
 		bool ret = true;
+		
+		FilePath applicationPath( filename );
+		
+		// Chargement de la texture par défaut
+		std::unique_ptr<Image> defaultTex = loadImage( applicationPath.dirPath() + "white.png" );
 
+		if (defaultTex == NULL) {
+			std::cout << "Erreur lors du chargement de la texture par défaut." << std::endl;
+			ret = false;
+		}
+
+		// On prépare toutes les textures
 		for (unsigned int i = 0; i < pScene->mNumMaterials; i++) {
 			const aiMaterial* pMaterial = pScene->mMaterials[i];
 
@@ -202,50 +199,29 @@ namespace Projet
 
 				// On récupère la texture
 				if (pMaterial->GetTexture(aiTextureType_DIFFUSE, 0, &path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) {
-					std::string FullPath = dir + "/" + path.data;
+					std::unique_ptr<Image> tex = loadImage( applicationPath.dirPath() + path.data );
 
-					FilePath applicationPath( filename );
-					std::unique_ptr<Image> tex = loadImage( applicationPath.dirPath() );
+					GLuint TextureId;
+					glGenTextures(1, &TextureId);
+					glBindTexture(GL_TEXTURE_2D, TextureId);
 
+					// Si la texture n'a pas pu être chargée, on utilise celle par défaut
 					if (tex == NULL){
-						printf("Erreur lors du chargement de la texture '%s'\n", FullPath.c_str());
-						delete &m_Textures[i];
-						m_Textures[i] = 0;
+						std::cout << "Erreur lors du chargement de la texture " << applicationPath.dirPath() + path.data << std::endl;
+						glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, defaultTex->getWidth(), defaultTex->getHeight(), 0, GL_RGBA, GL_FLOAT, defaultTex->getPixels());						
 						ret = false;
 					} else {
-						GLuint TextureId;
-						glGenTextures(1, &TextureId);
-						glBindTexture(GL_TEXTURE_2D, TextureId);
-
+						std::cout << "Texture " << applicationPath.dirPath() + path.data << " bien chargée" << std::endl;
 						glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tex->getWidth(), tex->getHeight(), 0, GL_RGBA, GL_FLOAT, tex->getPixels());
-						glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-						glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-
-						m_Textures[i] = TextureId;
 					}
 
-					/*
-					m_Textures[i] = new Texture(GL_TEXTURE_2D, FullPath.c_str());
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-					if (!m_Textures[i]->Load()) {
-						printf("Error loading texture '%s'\n", FullPath.c_str());
-						delete m_Textures[i];
-						m_Textures[i] = NULL;
-						ret = false;
-					}
-					*/
+					m_Textures[i] = TextureId;
+
 				}
 			}
-
-			// Load a white texture in case the model does not include its own texture
-			/*
-			if (!m_Textures[i]) {
-				m_Textures[i] = new Texture(GL_TEXTURE_2D, "./white.png");
-
-				ret = m_Textures[i]->Load();
-			}
-			*/
 		}
 
 		return ret;
@@ -268,7 +244,6 @@ namespace Projet
 			const unsigned int MaterialIndex = m_Entries[i].MaterialIndex;
 
 			if (MaterialIndex < m_Textures.size() && m_Textures[MaterialIndex]) {
-				// m_Textures[MaterialIndex]->Bind(GL_TEXTURE0);
 				glBindTexture(GL_TEXTURE_2D, m_Textures[MaterialIndex]);
 			}
 
