@@ -2,13 +2,11 @@
 #include <GL/glew.h>
 #include <iostream>
 
-#include <projet/scene.hpp>
+#include <projet/default_assimp_mesh.hpp>
 
 using namespace glimac;
 
 int main(int argc, char** argv) {
-    Projet::Scene* scene = new Projet::Scene( "k" );
-    
     // Initialize SDL and open a window
     SDLWindowManager windowManager(800, 600, "GLImac");
 
@@ -25,6 +23,10 @@ int main(int argc, char** argv) {
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
+
+    Projet::Mesh* mesh = new Projet::Mesh();
+    mesh->LoadMesh( "Content/box.obj" );
+
 
     // Application loop:
     bool done = false;
