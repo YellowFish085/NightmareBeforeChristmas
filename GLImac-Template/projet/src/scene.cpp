@@ -1,4 +1,4 @@
-#include "glimac/scene.hpp"
+#include "projet/scene.hpp"
 
 namespace Projet
 {

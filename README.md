@@ -14,7 +14,3 @@
 ## Code
 
 Le dossier du projet est le dossier *GLImac-Template/dev*
-
-## Bugs
-
-Pour le moment, on ne peut pas utiliser de dossier autre que glimac pour nos .hpp et .cpp : erreurs lorsqu'on essaye d'utiliser des classes ou méthodes d'Assimp.
