@@ -18,8 +18,16 @@ Vertex::Vertex(float posX, float posY, float posZ, float tcX, float tcY, float n
 
 };
 
-/* |_Operators */
+/* |_Copy */
+Vertex::Vertex(const Vertex& vertexToCopy) {
+  _position = vertexToCopy._position;
+  _textcoord = vertexToCopy._textcoord;
+  _normal = vertexToCopy._normal;
+}
 
+/* OVERLOADING */
+/* Operators */
+/* |_Comparison operators */
 bool Vertex::operator==(const Vertex& rhs) const {
   return(_position == rhs._position && _textcoord == rhs._textcoord && _normal == rhs._normal);
 }

@@ -18,8 +18,12 @@ class Vertex {
 
     Vertex(float posX, float posY, float posZ, float tcX, float tcY, float normX, float normY, float normZ);
 
-  /* |_Operators */
+  /* |_Copy */
+    Vertex(const Vertex& vertexToCopy);
 
+  /* OVERLOADING */
+  /* Operators */
+  /* |_Comparison operators */
     bool operator==(const Vertex& rhs) const;
 
 };
