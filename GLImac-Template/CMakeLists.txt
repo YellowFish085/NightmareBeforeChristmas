@@ -21,6 +21,7 @@ set(ALL_LIBRARIES glimac projet ${SDL_LIBRARY} ${OPENGL_LIBRARIES} ${GLEW_LIBRAR
 
 add_subdirectory(glimac)
 add_subdirectory(projet)
+add_subdirectory(tests)
 
 file(GLOB DEV_DIRECTORIES "dev*")
 
