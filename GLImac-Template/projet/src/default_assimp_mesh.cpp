@@ -64,8 +64,8 @@ namespace Projet
 	void Mesh::Clear()
 	{
 		for (unsigned int i = 0; i < m_Textures.size(); i++) {
-			glDeleteTextures(1, &m_Textures[i]);
-
+			// SAFE_DELETE(m_Textures[i]);
+			// glDeleteTextures(1, &m_Textures[i]);
 		}
 	}
 
@@ -204,6 +204,7 @@ namespace Projet
 				if (pMaterial->GetTexture(aiTextureType_DIFFUSE, 0, &path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) {
 					std::string FullPath = dir + "/" + path.data;
 
+					/*
 					FilePath applicationPath( filename );
 					std::unique_ptr<Image> tex = loadImage( applicationPath.dirPath() );
 
@@ -224,8 +225,8 @@ namespace Projet
 
 						m_Textures[i] = TextureId;
 					}
-
-					/*
+					*/
+					
 					m_Textures[i] = new Texture(GL_TEXTURE_2D, FullPath.c_str());
 
 					if (!m_Textures[i]->Load()) {
@@ -233,19 +234,21 @@ namespace Projet
 						delete m_Textures[i];
 						m_Textures[i] = NULL;
 						ret = false;
+					} else {
+						printf("Yes ! texture '%s'\n", FullPath.c_str());
 					}
-					*/
+					
 				}
 			}
 
 			// Load a white texture in case the model does not include its own texture
-			/*
 			if (!m_Textures[i]) {
-				m_Textures[i] = new Texture(GL_TEXTURE_2D, "./white.png");
+				m_Textures[i] = new Texture(GL_TEXTURE_2D, "Content/white.png");
 
 				ret = m_Textures[i]->Load();
+			} else {
+				printf("Pas besoin yolo\n");
 			}
-			*/
 		}
 
 		return ret;
@@ -268,8 +271,8 @@ namespace Projet
 			const unsigned int MaterialIndex = m_Entries[i].MaterialIndex;
 
 			if (MaterialIndex < m_Textures.size() && m_Textures[MaterialIndex]) {
-				// m_Textures[MaterialIndex]->Bind(GL_TEXTURE0);
-				glBindTexture(GL_TEXTURE_2D, m_Textures[MaterialIndex]);
+				m_Textures[MaterialIndex]->Bind(GL_TEXTURE0);
+				//glBindTexture(GL_TEXTURE_2D, m_Textures[MaterialIndex]);
 			}
 
 			glDrawElements(GL_TRIANGLES, m_Entries[i].NumIndices, GL_UNSIGNED_INT, 0);

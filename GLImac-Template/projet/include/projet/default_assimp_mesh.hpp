@@ -17,6 +17,8 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include "default_assimp_texture.hpp"
+
 #define INVALID_OGL_VALUE 0xffffffff
 
 namespace Projet
@@ -70,12 +72,12 @@ namespace Projet
       GLuint IB;
       unsigned int NumIndices;
       unsigned int MaterialIndex;
-      };
+    };
 
     // Vecteur de structures MeshEntry
     std::vector<MeshEntry> m_Entries;
     // Vecteur pour les textures
-    std::vector<GLuint> m_Textures;
+    std::vector<Texture*> m_Textures;
   };
 
 }
