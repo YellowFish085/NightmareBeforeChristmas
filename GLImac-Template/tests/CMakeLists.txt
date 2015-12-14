@@ -2,7 +2,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 
 ## Compilation de gtest
 find_package(Threads REQUIRED)
-set(GTEST_DIR ~/gtest)    # Threads for gtest
+set(GTEST_DIR gtest)
 include_directories(SYSTEM ${GTEST_DIR}/include)
 include_directories(${GTEST_DIR})
 add_library(gtest ${GTEST_DIR}/src/gtest-all.cc) # gtest - librairie
