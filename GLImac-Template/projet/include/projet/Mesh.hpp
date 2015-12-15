@@ -2,7 +2,7 @@
 
 #include "projet/Vertex.hpp"
 
-#define UNDEFINED -1
+#define UNDEFINED -1 // Used if materialIndex is not defined
 
 class Mesh {
 
@@ -10,7 +10,7 @@ class Mesh {
   private :
     std::vector<Vertex> _vertices; // VBO
     std::vector<uint32_t> _indices; // IBO
-    unsigned int _materialIndex; // Indice du materiaux du mesh
+    unsigned int _materialIndex; // Index of the material used on the mesh
 
   /* CONSTRUCTORS */
   public :
