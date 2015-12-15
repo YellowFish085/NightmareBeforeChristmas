@@ -24,11 +24,12 @@ namespace Projet
 
 		use();
 
-		_MVPlocation = glGetUniformLocation(_Program.getGLId(), "uMVPMatrix");
-		_MVlocation = glGetUniformLocation(_Program.getGLId(), "uMVMatrix");
-		_Nlocation = glGetUniformLocation(_Program.getGLId(), "uNormalMatrix");
-
-		std::cout << "ShaderProgram - créé avec succès. " << std::endl;
+		_Texlocation = glGetUniformLocation(_Program.getGLId(), "uTexture");
+		_PMlocation  = glGetUniformLocation(_Program.getGLId(), "uPMatrix");
+		_WMlocation  = glGetUniformLocation(_Program.getGLId(), "uWMatrix");
+		_NMlocation  = glGetUniformLocation(_Program.getGLId(), "uNMatrix");
+		
+		std::cout << "ShaderProgram - créé avec succès. " << std::endl << std::endl;
 
 		return true;
 	}
@@ -36,5 +37,25 @@ namespace Projet
 	void ShaderProgram::use()
 	{
 		_Program.use();
+	}
+
+	void ShaderProgram::setTextureLocation(unsigned int v)
+	{
+	  glUniform1i(_Texlocation, v);
+	}
+
+	void ShaderProgram::setProjectionMatrix(const float* v)
+	{
+		glUniformMatrix4fv(_PMlocation, 1, GL_FALSE, v);
+	}
+
+	void ShaderProgram::setWorldMatrix(const float* v)
+	{
+		glUniformMatrix4fv(_WMlocation, 1, GL_FALSE, v);
+	}
+
+	void ShaderProgram::setNormalMatrix(const float* v)
+	{
+		glUniformMatrix4fv(_NMlocation, 1, GL_FALSE, v);
 	}
 }

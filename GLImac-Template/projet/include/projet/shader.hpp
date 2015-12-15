@@ -8,20 +8,32 @@
 
 namespace Projet
 {
+	/**
+	 * Class ShaderProgram
+	 * Create the shader program which will be used in the app
+	 **/
 	class ShaderProgram
 	{
 	public:
 		ShaderProgram(const glimac::FilePath* applicationPath);
 		~ShaderProgram();
 
-		bool init(const char* vsFilename, const char* fsFilename);
+		bool init(const char* vsFilename, const char* fsFilename);	// Create a shader program
 		void use();
 
+		// Setters for the uniforms variables
+		void setTextureLocation(unsigned int v);
+		void setProjectionMatrix(const float* v);
+		void setWorldMatrix(const float* v);
+		void setNormalMatrix(const float* v);
+		
 	private:
-		const glimac::FilePath** _ApplicationPath;	// Pour le chemin de chargement des shaders
-		glimac::Program _Program;						// Programme glimac
-		GLint _MVPlocation;									// Model View Projetction matrix location
-		GLint _MVlocation;									// Model View matrix location
-		GLint _Nlocation;										// Normal matrix location
+		GLint _Texlocation;	// Texture location
+		GLint _PMlocation;	// Projection Matrix location
+		GLint _WMlocation;	// World Matrix location
+		GLint _NMlocation;	// Normal Matrix location
+
+		const glimac::FilePath** _ApplicationPath;
+		glimac::Program _Program;
 	};
 }
