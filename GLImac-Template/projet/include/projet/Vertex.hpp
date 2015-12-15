@@ -1,6 +1,7 @@
 #include <glimac/glm.hpp>
 
-namespace Projet {
+namespace Projet
+{
   class Vertex {
   /* CONSTRUCTORS */
   public:
