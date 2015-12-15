@@ -1,40 +1,43 @@
 #include "projet/Vertex.hpp"
 
-/* CONSTRUCTORS */
-/* |_Default */
-Vertex::Vertex() :
-  _position(glm::vec3(0)),
-  _textcoord(glm::vec2(0)),
-  _normal(glm::vec3(0)){
+namespace Projet
+{
+  /* CONSTRUCTORS */
+  /* |_Default */
+  Vertex::Vertex() :
+    _position(glm::vec3(0)),
+    _texCoords(glm::vec2(0)),
+    _normal(glm::vec3(0)){
 
-};
+  };
 
-/* |_Others */
-Vertex::Vertex(glm::vec3 position, glm::vec2 textcoord, glm::vec3 normal) :
-  _position(position),
-  _textcoord(textcoord),
-  _normal(normal){
+  /* |_Others */
+  Vertex::Vertex(glm::vec3 position, glm::vec2 textcoord, glm::vec3 normal) :
+    _position(position),
+    _texCoords(textcoord),
+    _normal(normal){
 
-};
+  };
 
-Vertex::Vertex(float posX, float posY, float posZ, float tcX, float tcY, float normX, float normY, float normZ) :
-  _position(glm::vec3(posX, posY, posZ)),
-  _textcoord(glm::vec2(tcX, tcY)),
-  _normal(glm::vec3(normX, normY, normZ)){
+  Vertex::Vertex(float posX, float posY, float posZ, float tcX, float tcY, float normX, float normY, float normZ) :
+    _position(glm::vec3(posX, posY, posZ)),
+    _texCoords(glm::vec2(tcX, tcY)),
+    _normal(glm::vec3(normX, normY, normZ)){
 
-};
+  };
 
-/* |_Copy */
-Vertex::Vertex(const Vertex& vertexToCopy) :
-  _position(vertexToCopy._position),
-  _textcoord(vertexToCopy._textcoord),
-  _normal(vertexToCopy._normal){
+  /* |_Copy */
+  Vertex::Vertex(const Vertex& vertexToCopy) :
+    _position(vertexToCopy._position),
+    _texCoords(vertexToCopy._texCoords),
+    _normal(vertexToCopy._normal){
 
-};
+  };
 
-/* OVERLOADING */
-/* Operators */
-/* |_Comparison operators */
-bool Vertex::operator==(const Vertex& rhs) const {
-  return(_position == rhs._position && _textcoord == rhs._textcoord && _normal == rhs._normal);
+  /* OVERLOADING */
+  /* Operators */
+  /* |_Comparison operators */
+  bool Vertex::operator==(const Vertex& rhs) const {
+    return(_position == rhs._position && _texCoords == rhs._texCoords && _normal == rhs._normal);
+  }
 }

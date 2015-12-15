@@ -1,15 +1,13 @@
 #include <glimac/glm.hpp>
 
-class Vertex {
-
-  /* ATTRIBUTES */
-  private:
-    glm::vec3 _position;
-    glm::vec2 _textcoord;
-    glm::vec3 _normal;
-
+namespace Projet {
+  class Vertex {
   /* CONSTRUCTORS */
   public:
+    glm::vec3 _position;
+    glm::vec2 _texCoords;
+    glm::vec3 _normal;
+    
   /* |_Default */
     Vertex();
 
@@ -25,5 +23,5 @@ class Vertex {
   /* Operators */
   /* |_Comparison operators */
     bool operator==(const Vertex& rhs) const;
-
-};
+  };
+}
