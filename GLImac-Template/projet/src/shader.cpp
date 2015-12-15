@@ -2,9 +2,9 @@
 
 namespace Projet
 {
-	ShaderProgram::ShaderProgram(const glimac::FilePath applicationPath)
+	ShaderProgram::ShaderProgram(const glimac::FilePath* applicationPath)
 	{
-		_applicationPath = applicationPath;
+		_ApplicationPath = &applicationPath;
 	}
 
 	ShaderProgram::~ShaderProgram()
@@ -14,9 +14,13 @@ namespace Projet
 
 	bool ShaderProgram::init(const char* vsFilename, const char* fsFilename)
 	{
+		std::cout << "ShaderProgram - initialisation..." << std::endl;
+
+		const glimac::FilePath* dir = *_ApplicationPath;
+
 		_Program = loadProgram(
-				_applicationPath.dirPath() + "shaders/" + vsFilename,
-				_applicationPath.dirPath() + "shaders/" + fsFilename);
+				dir->dirPath() + "shaders/" + vsFilename,
+				dir->dirPath() + "shaders/" + fsFilename);
 
 		use();
 
@@ -24,7 +28,7 @@ namespace Projet
 		_MVlocation = glGetUniformLocation(_Program.getGLId(), "uMVMatrix");
 		_Nlocation = glGetUniformLocation(_Program.getGLId(), "uNormalMatrix");
 
-		std::cout << "Shader Program créé avec succès. " << std::endl;
+		std::cout << "ShaderProgram - créé avec succès. " << std::endl;
 
 		return true;
 	}

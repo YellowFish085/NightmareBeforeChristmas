@@ -11,14 +11,14 @@ namespace Projet
 	class ShaderProgram
 	{
 	public:
-		ShaderProgram(const glimac::FilePath applicationPath);
+		ShaderProgram(const glimac::FilePath* applicationPath);
 		~ShaderProgram();
 
 		bool init(const char* vsFilename, const char* fsFilename);
 		void use();
 
 	private:
-		glimac::FilePath _applicationPath;	// Pour le chemin de chargement des shaders
+		const glimac::FilePath** _ApplicationPath;	// Pour le chemin de chargement des shaders
 		glimac::Program _Program;						// Programme glimac
 		GLint _MVPlocation;									// Model View Projetction matrix location
 		GLint _MVlocation;									// Model View matrix location
