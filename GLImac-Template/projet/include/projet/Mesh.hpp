@@ -20,6 +20,9 @@ class Mesh {
     /* Others */
     Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, unsigned int materialIndex);
 
+    /* Copy */
+    Mesh(const Mesh& meshToCopy);
+
   /* SETTERS */
     void setMaterialIndex (const unsigned int material);
 
@@ -28,14 +31,21 @@ class Mesh {
     void addIndex(const uint32_t i);
 
   /* GETTERS */
-    unsigned int getMaterialIndex() const;
+    const unsigned int getMaterialIndex() const;
 
-    Vertex* getVertices();
+    const Vertex* getVertices() const;
 
-    uint32_t* getIndices();
+    const uint32_t* getIndices() const;
 
   /* OVERLOADING */
     /* Comparison operators */
     bool operator==(const Mesh& rh) const;
+
+  /* OTHER METHODS */
+    const unsigned int nbVertices() const;
+
+    const unsigned int nbIndices() const;
+
+    const unsigned int nbFaces() const; // A face is a triangle
 
 };
