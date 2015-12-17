@@ -19,10 +19,10 @@ namespace Projet
 	class Scene
 	{
 		private:
-			const glimac::FilePath* _applicationPath;
-			ShaderProgram* _program;
-			std::vector<Mesh*> _meshes;
-			TrackballCamera _camera;
+			const glimac::FilePath* _ApplicationPath;
+			ShaderProgram* _Program;
+			std::vector<Mesh*> _Meshes;
+			TrackballCamera _Camera;
 
 
 		public:
