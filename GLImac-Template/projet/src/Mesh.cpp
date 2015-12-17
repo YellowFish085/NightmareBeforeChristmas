@@ -257,11 +257,34 @@ namespace Projet
 
       glDrawElements(GL_TRIANGLES, _entries[i].numIndices, GL_UNSIGNED_INT, 0);
     }
-    
+
+    std::cout << "HELLO" << std::endl;
+
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
     glDisableVertexAttribArray(2);
   }
+
+  void Mesh::setPosition(glm::vec3 position)
+  {
+    _position = position;
+  }
+
+  void Mesh::setAngle(float angle)
+  {
+    _angle = angle;
+  }
+
+  void Mesh::setRotAxe(glm::vec3 axis)
+  {
+    _rotAxe = axis;
+  }
+
+  void Mesh::setScale(glm::vec3 scale)
+  {
+    _scale = scale;
+  }
+
 
   /*
   void Mesh::setMaterialIndex (const unsigned int material)
@@ -279,7 +302,7 @@ namespace Projet
   {
     _indices.push_back(i);
   }
-  
+
   const unsigned int Mesh::getMaterialIndex() const
   {
     return _materialIndex;

@@ -30,7 +30,7 @@ namespace Projet
 
     bool loadMesh(const char* filename);  // Load 3D objet
     void render();                        // Render all the meshs
-    
+
     /*
     void setMaterialIndex (const unsigned int material);
     void addVertex(const Vertex& v);
@@ -46,6 +46,16 @@ namespace Projet
     const unsigned int nbIndices() const;
     const unsigned int nbFaces() const; // A face is a triangle
     */
+
+    glm::vec3 _position;              // Position in scene
+    float _angle;                      // Rotation in scene
+    glm::vec3 _rotAxe;
+    glm::vec3 _scale;                 // Scale in scene
+
+    void setPosition(glm::vec3 position);
+    void setAngle(float angle);
+    void setRotAxe(glm::vec3 axis);
+    void setScale(glm::vec3 scale);
 
   private:
     bool init(const aiScene* scene, const char* filename);          // Initialize Mesh object
