@@ -19,13 +19,13 @@ namespace Projet
 	}
 
 	/* INIT */
-	void Scene::init(const char* sceneFilePath)
+	bool Scene::init(const char* sceneFilePath)
 	{
 		std::ifstream sceneFile((_applicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str(), std::ios::in);
 
 		if (!sceneFile) {
 			std::cerr << "Impossible d'ouvrir le fichier de scene  à l'adresse : " << (_applicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str() << std::endl;
-			return;
+			return false;
 		}
 		else {
 			std::cout << "Fichier de scene ouvert" << std::endl;
@@ -38,7 +38,7 @@ namespace Projet
 		if (!reader.parse(sceneFile, root, false)) {
 			// report to the user the failure and their locations in the document.
       std::cerr  << "Erreur lors de la récupération du json !" << std::endl;
-			return;
+			return false;
 		}
 
 		std::cout << "type: " << root.type() << std::endl;
@@ -46,7 +46,7 @@ namespace Projet
 		const Json::Value meshes = root["meshes"]; // Get the meshes node
 		if (meshes == 0) {
 			std::cerr << "Impossible de récupérer le noeud meshes !" << std::endl;
-			return;
+			return false;
 		}
 
 		for (int i = 0; i < meshes.size(); i++) {
@@ -83,7 +83,7 @@ namespace Projet
 		const Json::Value cameraDatas = root["camera"]; // Get the camera node
 		if (cameraDatas == 0) {
 			std::cerr << "Impossible de récupérer le noeud camera !" << std::endl;
-			return;
+			return false;
 		}
 
 		_camera = TrackballCamera(
@@ -91,6 +91,8 @@ namespace Projet
 			cameraDatas.get("angle",0).get("x",0).asFloat(),
 			cameraDatas.get("angle",0).get("y",0).asFloat()
 		);
+
+		return true;
 
 	}
 

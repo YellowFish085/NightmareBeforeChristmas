@@ -37,7 +37,7 @@ namespace Projet
 			~Scene();
 
 			/* INIT */
-			void init(const char* sceneFilePath);
+			bool init(const char* sceneFilePath);
 
 			/* RENDER */
 			void render();
