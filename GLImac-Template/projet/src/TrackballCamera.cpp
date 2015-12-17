@@ -3,9 +3,21 @@
 namespace Projet
 {
 	TrackballCamera::TrackballCamera() :
-		m_fDistance(5),
+		m_fDistance(0),
 		m_fAngleX(0),
 		m_fAngleY(0)
+	{};
+
+	TrackballCamera::TrackballCamera(float distance, float angleX, float angleY) :
+		m_fDistance(distance),
+		m_fAngleX(angleX),
+		m_fAngleY(angleY)
+	{};
+
+	TrackballCamera::TrackballCamera(const TrackballCamera& rhs):
+		m_fDistance(rhs.m_fDistance),
+		m_fAngleX(rhs.m_fAngleX),
+		m_fAngleY(rhs.m_fAngleY)
 	{};
 
 	void TrackballCamera::moveFront(float delta)

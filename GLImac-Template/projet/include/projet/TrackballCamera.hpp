@@ -17,6 +17,10 @@ namespace Projet
 		public :
 			TrackballCamera();
 
+			TrackballCamera(float distance, float angleX, float angleY);
+
+			TrackballCamera(const TrackballCamera& rhs);
+
 		/* Autres */
 		void moveFront(float delta);
 
@@ -25,6 +29,6 @@ namespace Projet
 		void rotateUp(float degrees);
 
 		glm::mat4 getViewMatrix() const;
-		
+
 	};
 }
