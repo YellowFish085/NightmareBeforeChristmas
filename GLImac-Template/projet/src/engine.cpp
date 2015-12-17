@@ -33,12 +33,6 @@ namespace Projet
 		if (!initScenes("scenes/scenesList.json")) {
 			std::cerr << "Erreur lors de l'initialisation des scènes." << std::endl;
 		}
-		else {
-			std::cout << "Scenes bien chargées yolo" << std::endl;
-			_Scenes[0]->render();
-			_WindowManager->swapBuffers();
-			getchar();
-		}
 
 		return true;
 	}
@@ -98,9 +92,11 @@ namespace Projet
 		}
 
 		for (int i = 0; i < scenes.size(); i++) {
+			std::cout << scenes[i].get("name", 0).asString() << " initialisation..." << std::endl;
+
 			Scene* tmp = new Scene(_ApplicationPath, _Program);
 
-			if ( scenes[i].get("source", 0).asString().c_str() && tmp->init(scenes[i].get("source", 0).asString().c_str()) ) {
+			if ( tmp->init(scenes[i].get("source", 0).asString().c_str()) ) {
 				_Scenes.push_back(tmp);
 			}
 			else {
@@ -116,17 +112,34 @@ namespace Projet
 
 	void AppEngine::run()
 	{
+		bool done = false;
 
+		while(!done) {
+			if (keyboardEvents()) {
+				done = true;
+			}
+			renderScene();
+		}
 	}
 
 	void AppEngine::renderScene()
 	{
-
+		_Scenes[0]->render();
+		_WindowManager->swapBuffers();
 	}
 
-	void AppEngine::keyboardEvents()
+	bool AppEngine::keyboardEvents()
 	{
+		SDL_Event e;
 
+		while(_WindowManager->pollEvent(e)) {
+			if(e.type == SDL_QUIT) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 	}
 
 	void AppEngine::mouseEvents()

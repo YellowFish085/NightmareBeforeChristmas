@@ -34,7 +34,7 @@ namespace Projet
 		bool initSdlOpenGl();		// Initalize SDL and OpenGl
 		bool initScenes(const char* filename);
 		void renderScene();
-		void keyboardEvents();
+		bool keyboardEvents();
 		void mouseEvents();
 
 		glimac::FilePath* _ApplicationPath;

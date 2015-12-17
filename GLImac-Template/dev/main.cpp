@@ -10,6 +10,8 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
+    eng->run();
+
     // // Application loop:
     // bool done = false;
     // while(!done) {
