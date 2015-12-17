@@ -6,10 +6,9 @@
 #include <iostream>
 
 #include <assimp/scene.h>
+#include <json/json.h>
 
 #include <glimac/FilePath.hpp>
-
-#include <json/json.h>
 
 #include "Mesh.hpp"
 #include "shader.hpp"
@@ -19,27 +18,18 @@ namespace Projet
 {
 	class Scene
 	{
-
-		/* ATTRIBUTES */
 		private:
-			std::vector<Mesh*> _meshes;
 			const glimac::FilePath* _applicationPath;
 			ShaderProgram* _program;
+			std::vector<Mesh*> _meshes;
 			TrackballCamera _camera;
 
 
 		public:
-			/* CONSTRUCTORS */
-			/* Default */
 			Scene(const glimac::FilePath* applicationPath, ShaderProgram* program);
-
-			/* DESTRUCTOR */
 			~Scene();
 
-			/* INIT */
-			bool init(const char* sceneFilePath);
-
-			/* RENDER */
-			void render();
+			bool init(const char* sceneFilePath);		// Initialize the scene
+			void render();													// Render each meshes
 	};
 }
