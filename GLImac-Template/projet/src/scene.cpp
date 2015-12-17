@@ -19,10 +19,10 @@ namespace Projet
 	/* INIT */
 	void Scene::init(const char* sceneFilePath)
 	{
-		std::ifstream sceneFile((_applicationPath->dirPath() + "/assets/" + sceneFilePath).c_str(), std::ios::in);
+		std::ifstream sceneFile((_applicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str(), std::ios::in);
 
 		if (!sceneFile) {
-			std::cerr << "Impossible d'ouvrir le fichier de scene !" << std::endl;
+			std::cerr << "Impossible d'ouvrir le fichier de scene  à l'adresse : " << (_applicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str() << std::endl;
 			return;
 		}
 		else {
