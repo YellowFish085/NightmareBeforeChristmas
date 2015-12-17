@@ -13,6 +13,7 @@
 
 #include "Mesh.hpp"
 #include "shader.hpp"
+#include "TrackballCamera.hpp"
 
 namespace Projet
 {
@@ -23,7 +24,8 @@ namespace Projet
 		private:
 			std::vector<Mesh*> _meshes;
 			const glimac::FilePath* _applicationPath;
-			 ShaderProgram* _program;
+			ShaderProgram* _program;
+			TrackballCamera _camera;
 
 
 		public:

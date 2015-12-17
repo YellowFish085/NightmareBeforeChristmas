@@ -6,7 +6,9 @@ namespace Projet
 	/* CONSTRUCTORS */
 	/* Default */
 	Scene::Scene(const glimac::FilePath* applicationPath, ShaderProgram* program):
-		_applicationPath(applicationPath), _program(program)
+		_applicationPath(applicationPath),
+		_program(program),
+		_camera(TrackballCamera())
 	{};
 
 	/* DESTRUCTOR */
@@ -77,16 +79,33 @@ namespace Projet
 			_meshes.push_back(tmpMesh);
 
 		}
+
+		const Json::Value cameraDatas = root["camera"]; // Get the camera node
+		if (cameraDatas == 0) {
+			std::cerr << "Impossible de récupérer le noeud camera !" << std::endl;
+			return;
+		}
+
+		_camera = TrackballCamera(
+			cameraDatas.get("distanceToCenter", 5).asFloat(),
+			cameraDatas.get("angle",0).get("x",0).asFloat(),
+			cameraDatas.get("angle",0).get("y",0).asFloat()
+		);
+
 	}
 
 	void Scene::render() {
 		glEnable(GL_DEPTH_TEST);
 		for (auto mesh = _meshes.begin(); mesh != _meshes.end(); ++mesh) {
-			glm::mat4 MVMatrix, ProjMatrix, NormalMatrix;
+			glm::mat4 MVMatrix, ProjMatrix, NormalMatrix, ViewMatrix;
 
 			MVMatrix = glm::translate(glm::mat4(1), (*mesh)->_position);
 			MVMatrix = glm::rotate(MVMatrix, glm::radians((*mesh)->_angle), (*mesh)->_rotAxe);
 			MVMatrix = glm::scale(MVMatrix, (*mesh)->_scale);
+
+			ViewMatrix = _camera.getViewMatrix();
+
+			MVMatrix = ViewMatrix * MVMatrix;
 
 			ProjMatrix = glm::perspective(glm::radians(70.f), 800.f/600.f, 0.1f, 100.f);
 
