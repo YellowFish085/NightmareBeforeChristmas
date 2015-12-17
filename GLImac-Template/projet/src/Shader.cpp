@@ -1,4 +1,4 @@
-#include "projet/shader.hpp"
+#include "projet/Shader.hpp"
 
 namespace Projet
 {

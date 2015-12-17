@@ -10,8 +10,8 @@
 #include <glimac/SDLWindowManager.hpp>
 #include <glimac/FilePath.hpp>
 
-#include "shader.hpp"
-#include "scene.hpp"
+#include "Shader.hpp"
+#include "Scene.hpp"
 
 
 namespace Projet

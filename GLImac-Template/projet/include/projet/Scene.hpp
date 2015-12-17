@@ -11,7 +11,7 @@
 #include <glimac/FilePath.hpp>
 
 #include "Mesh.hpp"
-#include "shader.hpp"
+#include "Shader.hpp"
 #include "TrackballCamera.hpp"
 
 namespace Projet

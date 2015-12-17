@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include <projet/engine.hpp>
+#include <projet/Engine.hpp>
 
 int main(int argc, char** argv) {
     Projet::AppEngine* engine = new Projet::AppEngine(argv[0]);

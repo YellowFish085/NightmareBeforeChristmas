@@ -1,4 +1,4 @@
-#include "projet/scene.hpp"
+#include "projet/Scene.hpp"
 
 namespace Projet
 {
