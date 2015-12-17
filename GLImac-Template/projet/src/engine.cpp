@@ -31,7 +31,7 @@ namespace Projet
 		}
 
 		// A RETIRER UNE FOIS L'OBJET SCENE FINI
-		Mesh* mesh = new Mesh(_ApplicationPath);
+		/*Mesh* mesh = new Mesh(_ApplicationPath);
 		if (mesh->loadMesh("Content/box.obj")) {
 			std::cout << "Mesh - initalisée correctement." << std::endl;
 
@@ -46,15 +46,22 @@ namespace Projet
 			_Program->setWorldMatrix( glm::value_ptr(wMatrix) );
 			_Program->setNormalMatrix( glm::value_ptr(wMatrix) );
 
-			mesh->render();
+			mesh->render();*/
+
+			Scene scene(_ApplicationPath, _Program);
+
+			scene.init("scenes/scene1.json");
+
+			scene.render();
+
 			_WindowManager->swapBuffers();
 
 			getchar(); // juste la pour stoper l'app
 			// FIN A RETIRER
-		}
-		else {
+		//}
+		/*else {
 			std::cerr << "Mesh pas ok :c" << std::endl;
-		}
+		}*/
 
 		return true;
 	}
@@ -64,11 +71,11 @@ namespace Projet
 		std::cout << "SDL et OpenGl - initialisation..." << std::endl;
 
 		glimac::SDLWindowManager* windowManager = new glimac::SDLWindowManager(800, 600, "Nightmare Before Christmas");
-		
+
 		if (!windowManager) {
 			return false;
 		}
-		
+
 		_WindowManager = windowManager;
 
 		GLenum glewInitError = glewInit();
@@ -102,6 +109,6 @@ namespace Projet
 
 	void AppEngine::mouseEvents()
 	{
-		
+
 	}
 }

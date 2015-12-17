@@ -8,6 +8,8 @@
 
 #include "shader.hpp"
 #include "Mesh.hpp" // Sans doute à retirer une fois que l'objet scene sera fait
+#include "scene.hpp"
+
 
 namespace Projet
 {
@@ -27,7 +29,7 @@ namespace Projet
 
 	private:
 		bool initSdlOpenGl();		// Initalize SDL and OpenGl
-		void renderScene();			
+		void renderScene();
 		void keyboardEvents();
 		void mouseEvents();
 
