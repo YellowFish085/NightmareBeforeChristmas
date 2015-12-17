@@ -28,3 +28,5 @@ file(GLOB DEV_DIRECTORIES "dev*")
 foreach(DEV ${DEV_DIRECTORIES})
     add_subdirectory(${DEV})
 endforeach()
+
+file(COPY assets DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
