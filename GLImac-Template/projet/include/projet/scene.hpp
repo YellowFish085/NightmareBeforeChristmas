@@ -1,14 +1,43 @@
 #pragma once
 
+#include <vector>
+#include <string>
+#include <fstream>
+#include <iostream>
+
 #include <assimp/scene.h>
 
-#include "fileloader.hpp"
+#include <glimac/FilePath.hpp>
+
+#include <json/json.h>
+
+#include "Mesh.hpp"
+#include "shader.hpp"
 
 namespace Projet
 {
 	class Scene
 	{
-	public:
-		Scene( const char* filename );
+
+		/* ATTRIBUTES */
+		private:
+			std::vector<Mesh*> _meshes;
+			const glimac::FilePath* _applicationPath;
+			 ShaderProgram* _program;
+
+
+		public:
+			/* CONSTRUCTORS */
+			/* Default */
+			Scene(const glimac::FilePath* applicationPath, ShaderProgram* program);
+
+			/* DESTRUCTOR */
+			~Scene();
+
+			/* INIT */
+			void init(const char* sceneFilePath);
+
+			/* RENDER */
+			void render();
 	};
 }
