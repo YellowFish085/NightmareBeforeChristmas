@@ -14,7 +14,7 @@ namespace Projet
 
 	bool ShaderProgram::init(const char* vsFilename, const char* fsFilename)
 	{
-		std::cout << "ShaderProgram - initialisation..." << std::endl;
+		std::cout << "=====" << std::endl << "ShaderProgram - initialisation..." << std::endl;
 
 		const glimac::FilePath* dir = *_ApplicationPath;
 
