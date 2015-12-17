@@ -57,7 +57,7 @@ namespace Projet
 
   bool Mesh::loadMesh(const char* filename)
   {
-    std::cout << "Mesh " << filename << " - initialisation..." << std::endl;
+    std::cout << "-- Mesh " << filename << " - initialisation..." << std::endl;
 
     bool ret = false;
 
@@ -68,11 +68,11 @@ namespace Projet
 
     // If the file is loaded, the Mesh object can be initalized
     if (scene) {
-      std::cout << "Fichier " << filename << " chargé..." << std::endl;
+      std::cout << "-- " << filename << " chargé..." << std::endl;
       ret = init(scene, filename);
     }
     else {
-      std::cerr << "Erreur lors du chargement du fichier 3D " << filename << std::endl;
+      std::cerr << "-- ERROR: Erreur lors du chargement du fichier 3D " << filename << std::endl;
     }
 
     return ret;
@@ -146,7 +146,7 @@ namespace Projet
     std::unique_ptr<glimac::Image> defaultTex = loadImage(glimac::FilePath("Content/white.png"));
 
     if (defaultTex == NULL) {
-      std::cerr << "Erreur lors du chargement de la texture par défaut " << glimac::FilePath("Content/white.png").dirPath() << std::endl;
+      std::cerr << "-- Erreur lors du chargement de la texture par défaut " << glimac::FilePath("Content/white.png").dirPath() << std::endl;
       return false;
     }
 
@@ -174,7 +174,7 @@ namespace Projet
 
           // Using default texture if the correct texture was not loaded
           if (tex == NULL) {
-            std::cerr << "Erreur lors du chargement de la texture " << filePath << std::endl;
+            std::cerr << "-- Erreur lors du chargement de la texture " << filePath << std::endl;
             glTexImage2D(
               GL_TEXTURE_2D,
               0,
@@ -189,7 +189,7 @@ namespace Projet
             ret = false;
           }
           else {
-            std::cout << "Texture " << filePath << " chargée..." << std::endl;
+            std::cout << "-- " << filePath << " chargée..." << std::endl;
             glTexImage2D(
               GL_TEXTURE_2D,
               0,
@@ -257,8 +257,6 @@ namespace Projet
 
       glDrawElements(GL_TRIANGLES, _entries[i].numIndices, GL_UNSIGNED_INT, 0);
     }
-
-    std::cout << "HELLO" << std::endl;
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);

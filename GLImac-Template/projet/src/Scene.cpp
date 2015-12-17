@@ -20,7 +20,7 @@ namespace Projet
 		std::ifstream sceneFile((_ApplicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str(), std::ios::in);
 
 		if (!sceneFile) {
-			std::cerr << "- Impossible d'ouvrir le fichier de scene  à l'adresse : " << (_ApplicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str() << std::endl;
+			std::cerr << "- ERROR: Impossible d'ouvrir le fichier scene " << (_ApplicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str() << std::endl;
 			return false;
 		}
 		std::cout << "- Fichier " << sceneFilePath << " ouvert..." << std::endl;
@@ -30,14 +30,14 @@ namespace Projet
 		Json::Reader reader;
 
 		if (!reader.parse(sceneFile, root, false)) {
-      std::cerr  << "- Erreur lors de la récupération du json !" << std::endl;
+      std::cerr  << "- ERROR: Erreur lors de la récupération du json !" << std::endl;
 			return false;
 		}
 
 		// Retrieve the "meshes" node
 		const Json::Value meshes = root["meshes"];
 		if (meshes == 0) {
-			std::cerr << "- Impossible de récupérer le noeud meshes !" << std::endl;
+			std::cerr << "- ERROR: Impossible de récupérer le noeud meshes !" << std::endl;
 			return false;
 		}
 
@@ -50,6 +50,10 @@ namespace Projet
 			// Initialize the mesh
 			if (tmpMesh->loadMesh(meshes[i].get("source", 0).asString().c_str())) {
 				std::cout << "- Mesh " << i+1 << " initalisée correctement." << std::endl;
+			}
+			else {
+				std::cerr << "- ERROR: Erreur lors de l'initialisation de la Mesh " << i+1 << std::endl;
+				return false;
 			}
 
 			// Set the relative coords, rotation and scale of the mesh
@@ -79,7 +83,7 @@ namespace Projet
 		// Retrieve the camera node, used to set the défault caméra
 		const Json::Value cameraDatas = root["camera"];
 		if (cameraDatas == 0) {
-			std::cerr << "- Impossible de récupérer le noeud camera !" << std::endl;
+			std::cerr << "- ERROR: Impossible de récupérer le noeud camera !" << std::endl;
 			return false;
 		}
 
