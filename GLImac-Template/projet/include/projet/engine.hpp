@@ -1,13 +1,16 @@
 #pragma once
 
+#include <vector>
+#include <fstream>
 #include <iostream>
 #include <GL/glew.h>
 
 #include <glimac/SDLWindowManager.hpp>
 #include <glimac/FilePath.hpp>
 
+#include <json/json.h>
+
 #include "shader.hpp"
-#include "Mesh.hpp" // Sans doute à retirer une fois que l'objet scene sera fait
 #include "scene.hpp"
 
 
@@ -29,6 +32,7 @@ namespace Projet
 
 	private:
 		bool initSdlOpenGl();		// Initalize SDL and OpenGl
+		bool initScenes(const char* filename);
 		void renderScene();
 		void keyboardEvents();
 		void mouseEvents();
@@ -36,5 +40,6 @@ namespace Projet
 		glimac::FilePath* _ApplicationPath;
 		glimac::SDLWindowManager* _WindowManager;
 		ShaderProgram* _Program;
+		std::vector<Scene*> _Scenes;
 	};
 }

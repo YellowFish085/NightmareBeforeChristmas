@@ -30,38 +30,15 @@ namespace Projet
 			return false;
 		}
 
-		// A RETIRER UNE FOIS L'OBJET SCENE FINI
-		/*Mesh* mesh = new Mesh(_ApplicationPath);
-		if (mesh->loadMesh("Content/box.obj")) {
-			std::cout << "Mesh - initalisée correctement." << std::endl;
-
-			glm::mat4 pMatrix, wMatrix, nMatrix;
-
-			pMatrix  = glm::perspective(glm::radians(70.f), 800.f/600.f, 0.1f, 100.f);
-			wMatrix = glm::translate(wMatrix, glm::vec3(0, 0, -5));
-			nMatrix  = glm::transpose(glm::inverse(wMatrix));
-
-			_Program->setTextureLocation(0);
-			_Program->setProjectionMatrix( glm::value_ptr(pMatrix * wMatrix) );
-			_Program->setWorldMatrix( glm::value_ptr(wMatrix) );
-			_Program->setNormalMatrix( glm::value_ptr(wMatrix) );
-
-			mesh->render();*/
-
-			Scene scene(_ApplicationPath, _Program);
-
-			scene.init("scenes/scene1.json");
-
-			scene.render();
-
+		if (!initScenes("scenes/scenesList.json")) {
+			std::cerr << "Erreur lors de l'initialisation des scènes." << std::endl;
+		}
+		else {
+			std::cout << "Scenes bien chargées yolo" << std::endl;
+			_Scenes[0]->render();
 			_WindowManager->swapBuffers();
-
-			getchar(); // juste la pour stoper l'app
-			// FIN A RETIRER
-		//}
-		/*else {
-			std::cerr << "Mesh pas ok :c" << std::endl;
-		}*/
+			getchar();
+		}
 
 		return true;
 	}
@@ -88,6 +65,51 @@ namespace Projet
 		std::cout << "SDL et OpenGl - initialisés correctement." << std::endl;
 		std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
 		std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl << std::endl;
+
+		return true;
+	}
+
+	bool AppEngine::initScenes(const char* filename)
+	{
+		std::cout << "Scenes - initialisation..." << std::endl;
+
+		std::ifstream sceneList((_ApplicationPath->dirPath() + "/../assets/" + filename).c_str(), std::ios::in);
+
+		if (!sceneList) {
+			std::cerr << "Impossible d'ouvrir le fichier contenant la liste des scènes " << (_ApplicationPath->dirPath() + "/../assets/" + filename).c_str() << std::endl;
+			return false;
+		}
+		else {
+			std::cout << "Liste des scenes bien chargée..." << std::endl;
+		}
+
+		Json::Value root;
+		Json::Reader reader;
+
+		if (!reader.parse(sceneList, root, false)) {
+      std::cerr  << "Erreur lors de la récupération du json !" << std::endl;
+			return false;
+		}
+
+		const Json::Value scenes = root["scenes"];
+		if (scenes == 0) {
+			std::cerr << "Impossible de récupérer le noeud scenes !" << std::endl;
+			return false;
+		}
+
+		for (int i = 0; i < scenes.size(); i++) {
+			Scene* tmp = new Scene(_ApplicationPath, _Program);
+
+			if ( scenes[i].get("source", 0).asString().c_str() && tmp->init(scenes[i].get("source", 0).asString().c_str()) ) {
+				_Scenes.push_back(tmp);
+			}
+			else {
+				std::cerr << "Scene " << scenes[i].get("source", 0) << " n'a pas pu être initialisée." << std::endl;
+				return false;
+			}
+		}
+
+		std::cout << "Scenes - initialisées correctement." << std::endl << std::endl;
 
 		return true;
 	}
