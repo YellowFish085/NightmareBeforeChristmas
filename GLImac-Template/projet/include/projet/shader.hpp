@@ -19,7 +19,7 @@ namespace Projet
 		~ShaderProgram();
 
 		bool init(const char* vsFilename, const char* fsFilename);	// Create a shader program
-		void use();
+		void use();																									// Use the shader program
 
 		// Setters for the uniforms variables
 		void setTextureLocation(unsigned int v);
