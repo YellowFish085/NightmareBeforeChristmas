@@ -1,0 +1,13 @@
+{
+  "scenes" : [
+  	{
+  		"name" : "Scene 1",
+  		"source" : "scenes/scene1.json"
+  	},
+
+  	{
+  		"name" : "Scene 2",
+  		"source" : "scenes/scene2.json"
+  	}
+  ]
+}
