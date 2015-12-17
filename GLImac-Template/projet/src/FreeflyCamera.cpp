@@ -2,45 +2,36 @@
 
 namespace Projet
 {
-  /* METHODES */
-  /* Constructeurs */
   FreeflyCamera::FreeflyCamera() :
     m_Position(glm::vec3(0)),
     m_fPhi(M_PI),
     m_fTheta(0)
   {
     FreeflyCamera::computeDirectionVectors();
-  };
+  }
 
-  /* Déplacement */
-  /* latéral */
   void FreeflyCamera::moveLeft(float distance)
   {
     m_Position += distance * m_LeftVector;
-  };
+  }
 
-  /* Frontal */
   void FreeflyCamera::moveFront(float distance)
   {
     m_Position += distance * m_FrontVector;
-  };
+  }
 
-  /* Rotation */
-  /* y axis rotation */
   void FreeflyCamera::rotateLeft(float degrees)
   {
     m_fPhi += glm::radians(degrees);
     FreeflyCamera::computeDirectionVectors();
-  };
+  }
 
-  /* x axis rotation */
   void FreeflyCamera::rotateUp(float degrees)
   {
     m_fTheta += glm::radians(degrees);
     FreeflyCamera::computeDirectionVectors();
-  };
+  }
 
-  /* Divers */
   void FreeflyCamera::computeDirectionVectors()
   {
     m_FrontVector = glm::vec3(
@@ -56,10 +47,10 @@ namespace Projet
     );
 
     m_UpVector = glm::cross(m_FrontVector, m_LeftVector);
-  };
+  }
 
   glm::mat4 FreeflyCamera::getViewMatrix() const
   {
     return glm::lookAt(m_Position, (m_FrontVector + m_Position), m_UpVector);
-  };
+  }
 }
