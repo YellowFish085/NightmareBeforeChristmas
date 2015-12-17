@@ -19,7 +19,7 @@ namespace Projet
 	/* INIT */
 	void Scene::init(const char* sceneFilePath)
 	{
-		std::ifstream sceneFile(sceneFilePath, std::ios::in);
+		std::ifstream sceneFile((_applicationPath->dirPath() + "/assets/" + sceneFilePath).c_str(), std::ios::in);
 
 		if (!sceneFile) {
 			std::cerr << "Impossible d'ouvrir le fichier de scene !" << std::endl;
@@ -80,6 +80,7 @@ namespace Projet
 	}
 
 	void Scene::render() {
+		glEnable(GL_DEPTH_TEST);
 		for (auto mesh = _meshes.begin(); mesh != _meshes.end(); ++mesh) {
 			glm::mat4 MVMatrix, ProjMatrix, NormalMatrix;
 
