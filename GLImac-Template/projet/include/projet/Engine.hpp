@@ -10,6 +10,7 @@
 #include <glimac/SDLWindowManager.hpp>
 #include <glimac/FilePath.hpp>
 
+#include "utils.hpp"
 #include "Shader.hpp"
 #include "Scene.hpp"
 
@@ -36,7 +37,6 @@ namespace Projet
 		bool keyboardEvents();									// Keyboard event (return value for alt+f4)
 		void mouseEvents();											// Mouse events
 
-		glimac::FilePath* _ApplicationPath;
 		glimac::SDLWindowManager* _WindowManager;
 		ShaderProgram* _Program;
 		std::vector<Scene*> _Scenes;

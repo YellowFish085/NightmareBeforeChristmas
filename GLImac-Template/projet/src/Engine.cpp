@@ -4,10 +4,10 @@ namespace Projet
 {
 	AppEngine::AppEngine(const char* appPath)
 	{
-		glimac::FilePath* applicationPath = new glimac::FilePath(appPath);
-		_ApplicationPath = applicationPath;
-
 		_SceneId = -1;
+
+		initApplicationPath(appPath);
+		std::cout << "App run on " << gApplicationPath->dirPath() << std::endl;
 	}
 
 	AppEngine::~AppEngine()
@@ -29,7 +29,7 @@ namespace Projet
 
 		// Initialize the shader program
 		// Exit the app if something went wrong
-		_Program = new ShaderProgram(_ApplicationPath);
+		_Program = new ShaderProgram();
 		if (!_Program->init(vsFilename, fsFilename)) {
 			std::cerr << "ERROR: Erreur lors de l'initialisation du ShaderProgram." << std::endl;
 			return false;
@@ -81,10 +81,10 @@ namespace Projet
 		std::cout << "====" << std::endl << "Scenes - initialisation..." << std::endl;
 
 		// A json file with the scenes is loaded
-		std::ifstream sceneList((_ApplicationPath->dirPath() + "/../assets/" + filename).c_str(), std::ios::in);
-
+		std::ifstream sceneList(getScenesFilePath(filename), std::ios::in);
+		
 		if (!sceneList) {
-			std::cerr << "ERROR: Impossible d'ouvrir le fichier contenant la liste des scènes " << (_ApplicationPath->dirPath() + "/../assets/" + filename).c_str() << std::endl;
+			std::cerr << "ERROR: Impossible d'ouvrir le fichier contenant la liste des scènes " << getScenesFilePath(filename) << std::endl;
 			return false;
 		}
 		std::cout << "Liste des scenes ouvert..." << std::endl;
@@ -109,7 +109,7 @@ namespace Projet
 		for (int i = 0; i < scenes.size(); i++) {
 			std::cout << std::endl << scenes[i].get("name", 0).asString() << " - initialisation..." << std::endl;
 
-			Scene* tmp = new Scene(_ApplicationPath, _Program);
+			Scene* tmp = new Scene(_Program);
 
 			if ( tmp->init(scenes[i].get("source", 0).asString().c_str()) ) {
 				_Scenes.push_back(tmp);
