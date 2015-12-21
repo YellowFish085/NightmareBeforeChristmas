@@ -13,6 +13,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
+#include "utils.hpp"
 #include "Vertex.hpp"
 
 namespace Projet
@@ -23,7 +24,7 @@ namespace Projet
   class Mesh
   {
   public:
-    Mesh(const glimac::FilePath* applicationPath);
+    Mesh();
     ~Mesh();
     // Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, unsigned int materialIndex);
     // Mesh(const Mesh& meshToCopy);
@@ -78,7 +79,6 @@ namespace Projet
       unsigned int materialIndex;   // Id of the texture linked to the mesh
     };
 
-    const glimac::FilePath** _ApplicationPath;
     std::vector<MeshEntry> _entries;  // All the meshes
     std::vector<GLuint> _textures;    // All the textures
   };
