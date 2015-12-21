@@ -2,8 +2,7 @@
 
 namespace Projet
 {
-	Scene::Scene(const glimac::FilePath* applicationPath, ShaderProgram* program):
-		_ApplicationPath(applicationPath),
+	Scene::Scene(ShaderProgram* program):
 		_Program(program),
 		_Camera(TrackballCamera())
 	{};
@@ -16,10 +15,10 @@ namespace Projet
 	bool Scene::init(const char* sceneFilePath)
 	{
 		// Load the json with the scene datas
-		std::ifstream sceneFile((_ApplicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str(), std::ios::in);
+		std::ifstream sceneFile(getScenesFilePath(sceneFilePath), std::ios::in);
 
 		if (!sceneFile) {
-			std::cerr << "- ERROR: Impossible d'ouvrir le fichier scene " << (_ApplicationPath->dirPath() + "/../assets/" + sceneFilePath).c_str() << std::endl;
+			std::cerr << "- ERROR: Impossible d'ouvrir le fichier scene " << getScenesFilePath(sceneFilePath) << std::endl;
 			return false;
 		}
 		std::cout << "- Fichier " << sceneFilePath << " ouvert..." << std::endl;
@@ -44,7 +43,7 @@ namespace Projet
 		for (int i = 0; i < meshes.size(); i++) {
 			std::cout << "- Mesh " << i+1 << " sur " << meshes.size() << " - initialisation..." << std::endl;
 
-			Mesh* tmpMesh = new Mesh(_ApplicationPath);
+			Mesh* tmpMesh = new Mesh();
 
 			// Initialize the mesh
 			if (tmpMesh->loadMesh(meshes[i].get("source", 0).asString().c_str())) {
