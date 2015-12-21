@@ -6,6 +6,8 @@
 #include <glimac/FilePath.hpp>
 #include <glimac/Program.hpp>
 
+#include "utils.hpp"
+
 namespace Projet
 {
 	/**
@@ -15,7 +17,7 @@ namespace Projet
 	class ShaderProgram
 	{
 	public:
-		ShaderProgram(const glimac::FilePath* applicationPath);
+		ShaderProgram();
 		~ShaderProgram();
 
 		bool init(const char* vsFilename, const char* fsFilename);	// Create a shader program
@@ -33,7 +35,6 @@ namespace Projet
 		GLint _WMlocation;	// World Matrix location
 		GLint _NMlocation;	// Normal Matrix location
 
-		const glimac::FilePath** _ApplicationPath;
 		glimac::Program _Program;
 	};
 }
