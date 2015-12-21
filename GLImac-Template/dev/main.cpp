@@ -10,5 +10,7 @@ int main(int argc, char** argv) {
 
     engine->run();
 
+    delete(engine);
+
     return EXIT_SUCCESS;
 }

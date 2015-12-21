@@ -14,7 +14,8 @@ namespace Projet
 		TrackballCamera();
 		TrackballCamera(float distance, float angleX, float angleY);
 		TrackballCamera(const TrackballCamera& rhs);
-
+		~TrackballCamera();
+		
 		void moveFront(float delta);
 		void rotateLeft(float degrees);
 		void rotateUp(float degrees);

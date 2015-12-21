@@ -10,8 +10,7 @@ namespace Projet
 
   Mesh::MeshEntry::~MeshEntry()
   {
-    glDeleteBuffers(1, &vb);
-    glDeleteBuffers(1, &ib);
+
   }
 
   void Mesh::MeshEntry::init(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices)

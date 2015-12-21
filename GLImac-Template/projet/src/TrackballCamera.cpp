@@ -20,6 +20,11 @@ namespace Projet
 		m_fAngleY(rhs.m_fAngleY)
 	{}
 
+	TrackballCamera::~TrackballCamera()
+	{
+		
+	}
+
 	void TrackballCamera::moveFront(float delta)
 	{
 		m_fDistance += delta;

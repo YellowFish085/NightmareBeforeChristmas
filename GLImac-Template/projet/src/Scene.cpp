@@ -8,10 +8,9 @@ namespace Projet
 		_Camera(TrackballCamera())
 	{};
 
-	Scene::~Scene() {
-		for (auto mesh = _Meshes.begin(); mesh != _Meshes.end(); ++mesh) {
-			delete(*mesh);
-		}
+	Scene::~Scene()
+	{
+
 	}
 
 	bool Scene::init(const char* sceneFilePath)

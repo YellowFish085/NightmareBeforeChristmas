@@ -10,6 +10,11 @@ namespace Projet
     FreeflyCamera::computeDirectionVectors();
   }
 
+  FreeflyCamera::~FreeflyCamera()
+  {
+    
+  }
+
   void FreeflyCamera::moveLeft(float distance)
   {
     m_Position += distance * m_LeftVector;

@@ -17,6 +17,7 @@ namespace Projet
     
     public:
       FreeflyCamera();
+      ~FreeflyCamera();
 
       void moveLeft(float distance);
       void moveFront(float distance);
