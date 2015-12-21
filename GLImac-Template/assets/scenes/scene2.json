@@ -1,7 +1,7 @@
 {
   "meshes" : [
     {
-      "source" : "Content/monkey.obj",
+      "source" : "monkey.obj",
       "position" : {
         "x" : 0,
         "y" : 0,
@@ -21,7 +21,7 @@
     },
 
     {
-      "source" : "Content/box.obj", // A changer
+      "source" : "box.obj", // A changer
       "position" : {
         "x" : 0,
         "y" : 0,
