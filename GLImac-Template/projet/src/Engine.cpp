@@ -6,6 +6,8 @@ namespace Projet
 	{
 		glimac::FilePath* applicationPath = new glimac::FilePath(appPath);
 		_ApplicationPath = applicationPath;
+
+		_SceneId = -1;
 	}
 
 	AppEngine::~AppEngine()
@@ -39,6 +41,8 @@ namespace Projet
 			std::cerr << "ERROR: Erreur lors de l'initialisation des scènes." << std::endl;
 			return false;
 		}
+
+		_SceneId = 0;
 
 		std::cout << "Fin de l'initialisation de l'application." << std::endl;
 		std::cout << "*********************************************" << std::endl;
@@ -131,6 +135,7 @@ namespace Projet
 			if (keyboardEvents()) {
 				done = true;
 			}
+
 			renderScene();
 		}
 
@@ -139,7 +144,9 @@ namespace Projet
 
 	void AppEngine::renderScene()
 	{
-		_Scenes[0]->render();
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
+		_Scenes[_SceneId]->render();
 		_WindowManager->swapBuffers();
 	}
 
@@ -148,6 +155,19 @@ namespace Projet
 		SDL_Event e;
 
 		while(_WindowManager->pollEvent(e)) {
+			if (e.type == SDL_KEYDOWN) {
+				switch (e.key.keysym.sym) {
+					case SDLK_LEFT:
+						_SceneId = ((_SceneId <= 0) ? 0 : _SceneId-1);
+						break;
+					case SDLK_RIGHT:
+						_SceneId = ((_SceneId >= _Scenes.size()-1) ? _SceneId : _SceneId+1);
+						break;
+				}
+
+				std::cout << _SceneId << std::endl;
+			}
+
 			if(e.type == SDL_QUIT) {
 				std::cout << std::endl << "Fermeture d'application reçue..." << std::endl;
 				return true;

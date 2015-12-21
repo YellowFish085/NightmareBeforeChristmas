@@ -40,5 +40,6 @@ namespace Projet
 		glimac::SDLWindowManager* _WindowManager;
 		ShaderProgram* _Program;
 		std::vector<Scene*> _Scenes;
+		int _SceneId;
 	};
 }
