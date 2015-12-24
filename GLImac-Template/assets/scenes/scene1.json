@@ -5,27 +5,7 @@
       "position" : {
         "x" : 0,
         "y" : 0,
-        "z" : 0
-      },
-      "rotation" : 45,
-      "axis" : {
-        "x" : 0,
-        "y" : 1,
-        "z" : 0
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "Content/monkey.obj", // A changer
-      "position" : {
-        "x" : 0,
-        "y" : 0,
-        "z" : -5
+        "z" : 2
       },
       "rotation" : 0,
       "axis" : {
@@ -36,16 +16,89 @@
       "scale" : {
         "x" : 1,
         "y" : 1,
-        "z" : 1
+        "z" : 0.5
+      }
+    },
+
+    {
+      "source" : "Content/box.obj", // A changer
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : -2
+      },
+      "rotation" : 0,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 1,
+        "y" : 1,
+        "z" : 0.5
       }
     }
   ],
 
   "camera" : {
-    "distanceToCenter" : 2.5,
+    "distanceToCenter" : 5,
     "angle" : {
       "x" : -45,
-      "y" : 45
+      "y" : 0
     }
-  }
+  },
+
+  "lights" : [
+    {
+      "type" : "ambient",
+      "intensity" : {
+        "r" : 0.2,
+        "g" : 0.3,
+        "b" : 0.5
+      }
+    },
+
+    {
+      "type" : "point",
+      "intensity" : {
+        "r" : 1,
+        "g" : 1,
+        "b" : 1
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 0
+      }
+    },
+
+    {
+      "type" : "point",
+      "intensity" : {
+        "r" : 1,
+        "g" : 0,
+        "b" : 0
+      },
+      "position" : {
+        "x" : 2,
+        "y" : 0,
+        "z" : 0
+      }
+    },
+
+    {
+      "type" : "directional",
+      "intensity" : {
+        "r" : 1,
+        "g" : 1,
+        "b" : 1
+      },
+      "direction" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : -1
+      }
+    }
+  ]
 }
