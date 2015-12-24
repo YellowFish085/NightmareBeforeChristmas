@@ -155,6 +155,26 @@ namespace Projet
     {
       const aiMaterial* material = scene->mMaterials[i];
 
+      aiColor3D diffuseCol(1.f, 1.f, 1.f);
+      material->Get(AI_MATKEY_COLOR_DIFFUSE,diffuseCol);
+
+      _diffuseCoef = glm::vec3(
+        diffuseCol.r,
+        diffuseCol.g,
+        diffuseCol.b
+      );
+
+      aiColor3D specularCol(1.f, 1.f, 1.f);
+      material->Get(AI_MATKEY_COLOR_SPECULAR,specularCol);
+
+      _specularCoef = glm::vec3(
+        specularCol.r,
+        specularCol.g,
+        specularCol.b
+      );
+
+      material->Get(AI_MATKEY_SHININESS,_shininess);
+
       _textures[i] = 0;
 
       // Only diffuse textures are processed
@@ -263,6 +283,22 @@ namespace Projet
     glDisableVertexAttribArray(2);
   }
 
+  float Mesh::getShininess()
+  {
+    return _shininess;
+  }
+
+  glm::vec3 Mesh::getDiffuse()
+  {
+    return _diffuseCoef;
+  }
+
+  glm::vec3 Mesh::getSpecular()
+  {
+    return _specularCoef;
+  }
+
+
   void Mesh::setPosition(glm::vec3 position)
   {
     _position = position;
@@ -282,6 +318,27 @@ namespace Projet
   {
     _scale = scale;
   }
+
+  glm::vec3 Mesh::getPosition()
+  {
+    return _position;
+  }
+
+  float Mesh::getAngle()
+  {
+    return _angle;
+  }
+
+  glm::vec3 Mesh::getRotAxe()
+  {
+    return _rotAxe;
+  }
+
+  glm::vec3 Mesh::getScale()
+  {
+    return _scale;
+  }
+
 
 
   /*

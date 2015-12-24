@@ -47,15 +47,19 @@ namespace Projet
     const unsigned int nbFaces() const; // A face is a triangle
     */
 
-    glm::vec3 _position;              // Position in scene
-    float _angle;                      // Rotation in scene
-    glm::vec3 _rotAxe;
-    glm::vec3 _scale;                 // Scale in scene
+    float getShininess();
+    glm::vec3 getDiffuse();
+    glm::vec3 getSpecular();
 
     void setPosition(glm::vec3 position);
     void setAngle(float angle);
     void setRotAxe(glm::vec3 axis);
     void setScale(glm::vec3 scale);
+
+    glm::vec3 getPosition();
+    float getAngle();
+    glm::vec3 getRotAxe();
+    glm::vec3 getScale();
 
   private:
     bool init(const aiScene* scene, const char* filename);          // Initialize Mesh object
@@ -81,5 +85,14 @@ namespace Projet
     const glimac::FilePath** _ApplicationPath;
     std::vector<MeshEntry> _entries;  // All the meshes
     std::vector<GLuint> _textures;    // All the textures
+
+    glm::vec3 _position;              // Position in scene
+    float _angle;                      // Rotation in scene
+    glm::vec3 _rotAxe;
+    glm::vec3 _scale;                 // Scale in scene
+
+    float _shininess;
+    glm::vec3 _diffuseCoef;
+    glm::vec3 _specularCoef;
   };
 }
