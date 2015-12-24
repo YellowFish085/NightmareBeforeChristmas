@@ -2,9 +2,8 @@
 
 namespace Projet
 {
-	ShaderProgram::ShaderProgram(const glimac::FilePath* applicationPath)
+	ShaderProgram::ShaderProgram()
 	{
-		_ApplicationPath = &applicationPath;
 	}
 
 	ShaderProgram::~ShaderProgram()
@@ -16,11 +15,11 @@ namespace Projet
 	{
 		std::cout << "=====" << std::endl << "ShaderProgram - initialisation..." << std::endl;
 
-		const glimac::FilePath* dir = *_ApplicationPath;
+		glimac::FilePath vsPath, fsPath;
+		getShaderFilePath(&vsPath, vsFilename);
+		getShaderFilePath(&fsPath, fsFilename);
 
-		_Program = loadProgram(
-				dir->dirPath() + "shaders/" + vsFilename,
-				dir->dirPath() + "shaders/" + fsFilename);
+		_Program = loadProgram(vsPath, fsPath);
 
 		use();
 

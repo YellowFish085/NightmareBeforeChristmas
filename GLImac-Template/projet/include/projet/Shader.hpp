@@ -14,6 +14,8 @@
 #include "DirectionalLight.hpp"
 #include "PointLight.hpp"
 
+#include "utils.hpp"
+
 namespace Projet
 {
 	/**
@@ -23,7 +25,7 @@ namespace Projet
 	class ShaderProgram
 	{
 	public:
-		ShaderProgram(const glimac::FilePath* applicationPath);
+		ShaderProgram();
 		~ShaderProgram();
 
 		bool init(const char* vsFilename, const char* fsFilename);	// Create a shader program
@@ -50,7 +52,6 @@ namespace Projet
 		GLint _specularLocation;
 		GLint _shininessLocation;
 
-		const glimac::FilePath** _ApplicationPath;
 		glimac::Program _Program;
 	};
 }

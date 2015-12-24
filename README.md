@@ -3,7 +3,7 @@
 ## Installation
 
 1. Cloner le repository
-2. Dans le dossier *GLImac-Template/assimp*, lancer les commandes suivantes (la dernière n'est peut-être pas obligatoire) :
+2. *(Optionel, si Assimp non installé sur la machine)* Dans le dossier *GLImac-Template/assimp*, lancer les commandes suivantes (la dernière n'est peut-être pas obligatoire) :
 
   > $ cmake ./
   
@@ -11,9 +11,19 @@
 
   > $ updatedb 
 
+## Utilisation
+
+Utiliser les fleches gauche et droite pour passer d'une scène à une autre.
+Alt+F4 pour quitter l'application.
+
 ## Code
 
-Le dossier du projet est le dossier *GLImac-Template/dev*
+Le dossier du projet est le dossier *GLImac-Template/dev*.
+L'ensemble des *.hpp* et *.cpp* sur lesquels nous avons travaillé sont dans *GLImac-Template/projet*.
+
+## Libraries
+
+Jsoncpp (http://jsoncpp.sourceforge.net/) a été utilisé pour charger les fichiers JSON dans lesquels nous indiquons la structure des scènes.
 
 ## Module de tests unitaires
 

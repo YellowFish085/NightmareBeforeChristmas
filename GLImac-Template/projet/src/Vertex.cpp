@@ -30,6 +30,11 @@ namespace Projet
 
   }
 
+  Vertex::~Vertex()
+  {
+    
+  }
+
   /* OVERLOADING */
   /* Operators */
   /* |_Comparison operators */

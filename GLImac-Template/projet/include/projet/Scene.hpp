@@ -10,6 +10,7 @@
 
 #include <glimac/FilePath.hpp>
 
+#include "utils.hpp"
 #include "Mesh.hpp"
 #include "Shader.hpp"
 #include "TrackballCamera.hpp"
@@ -23,7 +24,6 @@ namespace Projet
 	class Scene
 	{
 		private:
-			const glimac::FilePath* _ApplicationPath;
 			ShaderProgram* _Program;
 			std::vector<Mesh*> _Meshes;
 			TrackballCamera _Camera;
@@ -31,7 +31,7 @@ namespace Projet
 
 
 		public:
-			Scene(const glimac::FilePath* applicationPath, ShaderProgram* program);
+			Scene(ShaderProgram* program);
 			~Scene();
 
 			bool init(const char* sceneFilePath);		// Initialize the scene

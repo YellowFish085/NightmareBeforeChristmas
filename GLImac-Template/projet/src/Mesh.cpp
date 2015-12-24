@@ -10,8 +10,7 @@ namespace Projet
 
   Mesh::MeshEntry::~MeshEntry()
   {
-    glDeleteBuffers(1, &vb);
-    glDeleteBuffers(1, &ib);
+
   }
 
   void Mesh::MeshEntry::init(const std::vector<Vertex>& vertices, const std::vector<unsigned int>& indices)
@@ -28,9 +27,9 @@ namespace Projet
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * numIndices, &indices[0], GL_STATIC_DRAW);
   }
 
-  Mesh::Mesh(const glimac::FilePath* applicationPath)
+  Mesh::Mesh()
   {
-    _ApplicationPath = &applicationPath;
+
   }
 
   Mesh::~Mesh()
@@ -61,10 +60,8 @@ namespace Projet
 
     bool ret = false;
 
-    const glimac::FilePath* dir = *_ApplicationPath;
-
     Assimp::Importer importer;
-    const aiScene* scene = importer.ReadFile(filename, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs);
+    const aiScene* scene = importer.ReadFile(getModelFilePath(filename), aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs);
 
     // If the file is loaded, the Mesh object can be initalized
     if (scene) {
@@ -140,13 +137,13 @@ namespace Projet
   {
     bool ret = true;
 
-    const glimac::FilePath* dir = *_ApplicationPath;
-
     // Loading default texture
-    std::unique_ptr<glimac::Image> defaultTex = loadImage(glimac::FilePath("Content/white.png"));
+    glimac::FilePath defTexturePath;
+    getTextureFilePath(&defTexturePath, "white.png");
+    std::unique_ptr<glimac::Image> defaultTex = loadImage(defTexturePath);
 
     if (defaultTex == NULL) {
-      std::cerr << "-- Erreur lors du chargement de la texture par défaut " << glimac::FilePath("Content/white.png").dirPath() << std::endl;
+      std::cerr << "-- Erreur lors du chargement de la texture par défaut " << defTexturePath << std::endl;
       return false;
     }
 
@@ -182,11 +179,10 @@ namespace Projet
         aiString path;
 
         if (material->GetTexture(aiTextureType_DIFFUSE, 0, &path, NULL, NULL, NULL, NULL, NULL) == AI_SUCCESS) {
-          char filePath[256] = "";
-          std::strcat(filePath, "Content/");
-          std::strcat(filePath, path.data);
+          glimac::FilePath texturePath;
+          getTextureFilePath(&texturePath, path.data);
 
-          std::unique_ptr<glimac::Image> tex = loadImage(glimac::FilePath(filePath));
+          std::unique_ptr<glimac::Image> tex = loadImage(texturePath);
 
           GLuint texId;
           glGenTextures(1, &texId);
@@ -194,7 +190,7 @@ namespace Projet
 
           // Using default texture if the correct texture was not loaded
           if (tex == NULL) {
-            std::cerr << "-- Erreur lors du chargement de la texture " << filePath << std::endl;
+            std::cerr << "-- Erreur lors du chargement de la texture " << texturePath << std::endl;
             glTexImage2D(
               GL_TEXTURE_2D,
               0,
@@ -209,7 +205,7 @@ namespace Projet
             ret = false;
           }
           else {
-            std::cout << "-- " << filePath << " chargée..." << std::endl;
+            std::cout << "-- " << texturePath << " chargée..." << std::endl;
             glTexImage2D(
               GL_TEXTURE_2D,
               0,
