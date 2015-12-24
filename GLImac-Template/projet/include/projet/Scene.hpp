@@ -13,6 +13,10 @@
 #include "Mesh.hpp"
 #include "Shader.hpp"
 #include "TrackballCamera.hpp"
+#include "Light.hpp"
+#include "AmbientLight.hpp"
+#include "DirectionalLight.hpp"
+#include "PointLight.hpp"
 
 namespace Projet
 {
@@ -23,6 +27,7 @@ namespace Projet
 			ShaderProgram* _Program;
 			std::vector<Mesh*> _Meshes;
 			TrackballCamera _Camera;
+			std::vector<Light*> _Lights;
 
 
 		public:

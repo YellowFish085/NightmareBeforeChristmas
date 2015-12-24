@@ -80,6 +80,55 @@ namespace Projet
 
 		}
 
+		// Retrieve the "lights" node
+		const Json::Value lights = root["lights"];
+		if (lights == 0) {
+			std::cerr << "- ERROR: Impossible de récupérer le noeud lights !" << std::endl;
+			return false;
+		}
+
+		for (int i = 0; i < lights.size() && i < 10 ; i++) {
+			std::cout << "- Light " << i+1 << " sur " << lights.size() << " - initialisation..." << std::endl;
+
+			if (lights[i].get("type",0).asString() == "ambient") {
+				_Lights.push_back( new AmbientLight(glm::vec3(
+						lights[i].get("intensity",1).get("r",1).asFloat(),
+						lights[i].get("intensity",1).get("g",1).asFloat(),
+						lights[i].get("intensity",1).get("b",1).asFloat()
+					))
+				);
+			}
+			else if (lights[i].get("type",0).asString() == "directional") {
+					std::cout << "-- DirectionalLight" << std::endl;
+					_Lights.push_back(new DirectionalLight(glm::vec3(
+							lights[i].get("intensity",1).get("r",1).asFloat(),
+							lights[i].get("intensity",1).get("g",1).asFloat(),
+							lights[i].get("intensity",1).get("b",1).asFloat()
+						),
+						glm::vec3(
+							lights[i].get("direction",0).get("x",0).asFloat(),
+							lights[i].get("direction",0).get("y",0).asFloat(),
+							lights[i].get("direction",-1).get("z",-1).asFloat()
+						)
+					)
+				);
+			}
+			else if (lights[i].get("type",0).asString() == "point") {
+					_Lights.push_back(new PointLight(glm::vec3(
+							lights[i].get("intensity",1).get("r",1).asFloat(),
+							lights[i].get("intensity",1).get("g",1).asFloat(),
+							lights[i].get("intensity",1).get("b",1).asFloat()
+						),
+						glm::vec3(
+							lights[i].get("position",0).get("x",0).asFloat(),
+							lights[i].get("position",0).get("y",0).asFloat(),
+							lights[i].get("position",0).get("z",0).asFloat()
+						)
+					)
+				);
+			}
+		}
+
 		// Retrieve the camera node, used to set the défault caméra
 		const Json::Value cameraDatas = root["camera"];
 		if (cameraDatas == 0) {
@@ -105,9 +154,9 @@ namespace Projet
 		for (auto mesh = _Meshes.begin(); mesh != _Meshes.end(); ++mesh) {
 			glm::mat4 MVMatrix, ProjMatrix, NormalMatrix, ViewMatrix;
 
-			MVMatrix = glm::translate(glm::mat4(1), (*mesh)->_position);
-			MVMatrix = glm::rotate(MVMatrix, glm::radians((*mesh)->_angle), (*mesh)->_rotAxe);
-			MVMatrix = glm::scale(MVMatrix, (*mesh)->_scale);
+			MVMatrix = glm::translate(glm::mat4(1), (*mesh)->getPosition());
+			MVMatrix = glm::rotate(MVMatrix, glm::radians((*mesh)->getAngle()), (*mesh)->getRotAxe());
+			MVMatrix = glm::scale(MVMatrix, (*mesh)->getScale());
 
 			ViewMatrix = _Camera.getViewMatrix();
 
@@ -118,9 +167,13 @@ namespace Projet
 			NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
 
 			_Program->setTextureLocation(0);
+			_Program->setDiffuse((*mesh)->getDiffuse());
+			_Program->setSpecular((*mesh)->getSpecular());
+			_Program->setShininess((*mesh)->getShininess());
 			_Program->setProjectionMatrix( glm::value_ptr(ProjMatrix * MVMatrix) );
 			_Program->setWorldMatrix( glm::value_ptr(MVMatrix) );
 			_Program->setNormalMatrix( glm::value_ptr(MVMatrix) );
+			_Program->setLights(_Lights, &ViewMatrix);
 
 			(*mesh)->render();
 		}
