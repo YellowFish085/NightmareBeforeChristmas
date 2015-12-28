@@ -136,7 +136,9 @@ namespace Projet
 
 		// Initialize the camera
 		_Camera = TrackballCamera(
-			cameraDatas.get("distanceToCenter", 5).asFloat(),
+			cameraDatas.get("distanceToCenter", 5).get("base", 5).asFloat(),
+			cameraDatas.get("distanceToCenter", 5).get("min", 5).asFloat(),
+			cameraDatas.get("distanceToCenter", 5).get("max", 5).asFloat(),
 			cameraDatas.get("angle",0).get("x",0).asFloat(),
 			cameraDatas.get("angle",0).get("y",0).asFloat()
 		);

@@ -21,7 +21,7 @@
     },
 
     {
-      "source" : "monkey.obj", // A changer
+      "source" : "box.obj",
       "position" : {
         "x" : 0,
         "y" : 0,
@@ -42,7 +42,11 @@
   ],
 
   "camera" : {
-    "distanceToCenter" : 5,
+    "distanceToCenter" : {
+      "base" : 5,
+      "min" : 2,
+      "max" : 7
+    },
     "angle" : {
       "x" : -45,
       "y" : 0
