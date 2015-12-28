@@ -191,12 +191,12 @@ namespace Projet
 			{
 			    if (e.motion.state & SDL_BUTTON_LMASK)
 			    {
-						_Scenes[_SceneId]->_Camera.rotateLeft(e.motion.xrel);
-						_Scenes[_SceneId]->_Camera.rotateUp(e.motion.yrel);
+						_Scenes[_SceneId]->_Camera.rotateLeft((float)e.motion.xrel);
+						_Scenes[_SceneId]->_Camera.rotateUp((float)e.motion.yrel);
 			    }
 					else if (e.motion.state & SDL_BUTTON_RMASK)
 			    {
-						_Scenes[_SceneId]->_Camera.moveFront(-e.motion.yrel / 2);
+						_Scenes[_SceneId]->_Camera.moveFront((float)-e.motion.yrel*0.05);
 			    }
 			}
 		}
