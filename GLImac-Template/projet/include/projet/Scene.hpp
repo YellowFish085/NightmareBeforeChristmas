@@ -26,11 +26,12 @@ namespace Projet
 		private:
 			ShaderProgram* _Program;
 			std::vector<Mesh*> _Meshes;
-			TrackballCamera _Camera;
 			std::vector<Light*> _Lights;
 
 
 		public:
+			TrackballCamera _Camera;
+
 			Scene(ShaderProgram* program);
 			~Scene();
 
