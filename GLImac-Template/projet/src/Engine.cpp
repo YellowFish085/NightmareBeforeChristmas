@@ -82,7 +82,7 @@ namespace Projet
 
 		// A json file with the scenes is loaded
 		std::ifstream sceneList(getScenesFilePath(filename), std::ios::in);
-		
+
 		if (!sceneList) {
 			std::cerr << "ERROR: Impossible d'ouvrir le fichier contenant la liste des scènes " << getScenesFilePath(filename) << std::endl;
 			return false;
@@ -136,6 +136,8 @@ namespace Projet
 				done = true;
 			}
 
+			mouseEvents();
+
 			renderScene();
 		}
 
@@ -145,7 +147,7 @@ namespace Projet
 	void AppEngine::renderScene()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
+
 		_Scenes[_SceneId]->render();
 		_WindowManager->swapBuffers();
 	}
@@ -180,6 +182,23 @@ namespace Projet
 
 	void AppEngine::mouseEvents()
 	{
+		SDL_Event e;
 
+		while(_WindowManager->pollEvent(e))
+		{
+
+			if (e.type == SDL_MOUSEMOTION)
+			{
+			    if (e.motion.state & SDL_BUTTON_LMASK)
+			    {
+						_Scenes[_SceneId]->_Camera.rotateLeft(e.motion.xrel);
+						_Scenes[_SceneId]->_Camera.rotateUp(e.motion.yrel);
+			    }
+					else if (e.motion.state & SDL_BUTTON_RMASK)
+			    {
+						_Scenes[_SceneId]->_Camera.moveFront(-e.motion.yrel / 2);
+			    }
+			}
+		}
 	}
 }
