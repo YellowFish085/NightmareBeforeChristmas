@@ -64,8 +64,8 @@
   "camera" : {
     "distanceToCenter" : {
       "base" : 7,
-      "min" : 2,
-      "max" : 7
+      "min" : 5,
+      "max" : 15
     },
     "angle" : {
       "x" : -45,
@@ -87,13 +87,13 @@
       "type" : "directional",
       "intensity" : {
         "r" : 1,
-        "g" : 1,
-        "b" : 1
+        "g" : 0.7,
+        "b" : 0.3
       },
       "direction" : {
         "x" : 0,
         "y" : 0,
-        "z" : -1
+        "z" : 1
       }
     },
 
@@ -105,9 +105,9 @@
         "b" : 0.3
       },
       "position" : {
-        "x" : 1,
+        "x" : 1.9,
         "y" : 1.5,
-        "z" : 2
+        "z" : 3
       }
     }
   ]

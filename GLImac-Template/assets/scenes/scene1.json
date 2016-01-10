@@ -123,9 +123,9 @@
 
   "camera" : {
     "distanceToCenter" : {
-      "base" : 5,
-      "min" : 2,
-      "max" : 7
+      "base" : 7,
+      "min" : 5,
+      "max" : 15
     },
     "angle" : {
       "x" : -45,
