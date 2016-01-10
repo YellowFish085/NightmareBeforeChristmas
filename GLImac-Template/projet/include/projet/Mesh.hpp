@@ -26,27 +26,9 @@ namespace Projet
   public:
     Mesh();
     ~Mesh();
-    // Mesh(std::vector<Vertex> vertices, std::vector<uint32_t> indices, unsigned int materialIndex);
-    // Mesh(const Mesh& meshToCopy);
-
+    
     bool loadMesh(const char* filename);  // Load 3D objet
     void render();                        // Render all the meshs
-
-    /*
-    void setMaterialIndex (const unsigned int material);
-    void addVertex(const Vertex& v);
-    void addIndex(const uint32_t i);
-
-    const unsigned int getMaterialIndex() const;
-    const Vertex* getVertices() const;
-    const uint32_t* getIndices() const;
-
-    bool operator==(const Mesh& rh) const;
-
-    const unsigned int nbEntries() const;
-    const unsigned int nbIndices() const;
-    const unsigned int nbFaces() const; // A face is a triangle
-    */
 
     float getShininess();
     glm::vec3 getDiffuse();
