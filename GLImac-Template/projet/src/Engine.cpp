@@ -184,8 +184,6 @@ namespace Projet
 			_SceneId = ((_SceneId >= _Scenes.size()-1) ? _SceneId : _SceneId+1);
 			break;
 		}
-
-		std::cout << _SceneId << std::endl;
 	}
 
 	void AppEngine::mouseEvents(SDL_Event e)
