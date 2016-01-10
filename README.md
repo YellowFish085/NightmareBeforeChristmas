@@ -16,6 +16,10 @@
 Utiliser les fleches gauche et droite pour passer d'une scène à une autre.
 Alt+F4 pour quitter l'application.
 
+Clic gauche + mouvement de la souris pour déplacer la caméra dans l'espace.
+
+Clicl droit + mouvement vertical de la souris pour zoomer / dézoomer sur le centre de la scène.
+
 ## Code
 
 Le dossier du projet est le dossier *GLImac-Template/dev*.

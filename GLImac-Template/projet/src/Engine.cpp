@@ -132,11 +132,9 @@ namespace Projet
 		bool done = false;
 
 		while(!done) {
-			if (keyboardEvents()) {
+			if (userEvents()) {
 				done = true;
 			}
-
-			mouseEvents();
 
 			renderScene();
 		}
@@ -152,53 +150,54 @@ namespace Projet
 		_WindowManager->swapBuffers();
 	}
 
-	bool AppEngine::keyboardEvents()
-	{
+	bool AppEngine::userEvents() {
 		SDL_Event e;
+		bool quit = false;
 
 		while(_WindowManager->pollEvent(e)) {
-			if (e.type == SDL_KEYDOWN) {
-				switch (e.key.keysym.sym) {
-					case SDLK_LEFT:
-						_SceneId = ((_SceneId <= 0) ? 0 : _SceneId-1);
-						break;
-					case SDLK_RIGHT:
-						_SceneId = ((_SceneId >= _Scenes.size()-1) ? _SceneId : _SceneId+1);
-						break;
-				}
+			if (e.type == SDL_MOUSEMOTION)
+			{
+			  mouseEvents(e);
+			}
 
-				std::cout << _SceneId << std::endl;
+
+			if (e.type == SDL_KEYDOWN) {
+				keyboardEvents(e);
 			}
 
 			if(e.type == SDL_QUIT) {
 				std::cout << std::endl << "Fermeture d'application reçue..." << std::endl;
-				return true;
-			}
-			else {
-				return false;
+				quit = true;
 			}
 		}
+
+		return quit;
 	}
 
-	void AppEngine::mouseEvents()
+	void AppEngine::keyboardEvents(SDL_Event e)
 	{
-		SDL_Event e;
-
-		while(_WindowManager->pollEvent(e))
-		{
-
-			if (e.type == SDL_MOUSEMOTION)
-			{
-			    if (e.motion.state & SDL_BUTTON_LMASK)
-			    {
-						_Scenes[_SceneId]->_Camera.rotateLeft((float)e.motion.xrel);
-						_Scenes[_SceneId]->_Camera.rotateUp((float)e.motion.yrel);
-			    }
-					else if (e.motion.state & SDL_BUTTON_RMASK)
-			    {
-						_Scenes[_SceneId]->_Camera.moveFront((float)-e.motion.yrel*0.05);
-			    }
-			}
+		switch (e.key.keysym.sym) {
+		case SDLK_LEFT:
+			_SceneId = ((_SceneId <= 0) ? 0 : _SceneId-1);
+			break;
+		case SDLK_RIGHT:
+			_SceneId = ((_SceneId >= _Scenes.size()-1) ? _SceneId : _SceneId+1);
+			break;
 		}
+
+		std::cout << _SceneId << std::endl;
+	}
+
+	void AppEngine::mouseEvents(SDL_Event e)
+	{
+    if (e.motion.state & SDL_BUTTON_LMASK)
+    {
+			_Scenes[_SceneId]->_Camera.rotateLeft((float)e.motion.xrel);
+			_Scenes[_SceneId]->_Camera.rotateUp((float)e.motion.yrel);
+    }
+		else if (e.motion.state & SDL_BUTTON_RMASK)
+    {
+			_Scenes[_SceneId]->_Camera.moveFront((float)-e.motion.yrel*0.05);
+    }
 	}
 }

@@ -34,8 +34,9 @@ namespace Projet
 		bool initSdlOpenGl();										// Initalize SDL and OpenGl
 		bool initScenes(const char* filename);	// Initialize the scenes
 		void renderScene();											// Render the current scene
-		bool keyboardEvents();									// Keyboard event (return value for alt+f4)
-		void mouseEvents();											// Mouse events
+		bool userEvents();									// Event loop
+		void keyboardEvents(SDL_Event e);									// Keyboard event (return value for alt+f4)
+		void mouseEvents(SDL_Event e);											// Mouse events
 
 		glimac::SDLWindowManager* _WindowManager;
 		ShaderProgram* _Program;
