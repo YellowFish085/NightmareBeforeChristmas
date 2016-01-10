@@ -1,11 +1,11 @@
 {
   "meshes" : [
     {
-      "source" : "box.obj",
+      "source" : "book.obj",
       "position" : {
         "x" : 0,
         "y" : 0,
-        "z" : 2
+        "z" : 0
       },
       "rotation" : 0,
       "axis" : {
@@ -16,14 +16,34 @@
       "scale" : {
         "x" : 1,
         "y" : 1,
-        "z" : 0.5
+        "z" : 1
       }
     },
 
     {
-      "source" : "box.obj",
+      "source" : "graveyard.obj",
       "position" : {
         "x" : 0,
+        "y" : 0,
+        "z" : 0
+      },
+      "rotation" : 0,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 1,
+        "y" : 1,
+        "z" : 1
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : -2.5,
         "y" : 0,
         "z" : -2
       },
@@ -34,8 +54,68 @@
         "z" : 0
       },
       "scale" : {
-        "x" : 1,
+        "x" : 0.5,
+        "y" : 0.5,
+        "z" : 0.5
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : -1,
+        "y" : -0.01,
+        "z" : -2
+      },
+      "rotation" : 12,
+      "axis" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 1
+      },
+      "scale" : {
+        "x" : 0.5,
+        "y" : 0.5,
+        "z" : 0.5
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : -2.5,
+        "y" : 0,
+        "z" : -1
+      },
+      "rotation" : 0,
+      "axis" : {
+        "x" : 0,
         "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.5,
+        "y" : 0.5,
+        "z" : 0.5
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : 1.5,
+        "y" : 0,
+        "z" : -1
+      },
+      "rotation" : 0,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.5,
+        "y" : 0.5,
         "z" : 0.5
       }
     }
@@ -49,7 +129,7 @@
     },
     "angle" : {
       "x" : -45,
-      "y" : 0
+      "y" : 45
     }
   },
 
@@ -64,34 +144,6 @@
     },
 
     {
-      "type" : "point",
-      "intensity" : {
-        "r" : 1,
-        "g" : 1,
-        "b" : 1
-      },
-      "position" : {
-        "x" : 0,
-        "y" : 0,
-        "z" : 0
-      }
-    },
-
-    {
-      "type" : "point",
-      "intensity" : {
-        "r" : 1,
-        "g" : 0,
-        "b" : 0
-      },
-      "position" : {
-        "x" : 2,
-        "y" : 0,
-        "z" : 0
-      }
-    },
-
-    {
       "type" : "directional",
       "intensity" : {
         "r" : 1,
@@ -102,6 +154,20 @@
         "x" : 0,
         "y" : 0,
         "z" : -1
+      }
+    },
+
+    {
+      "type" : "point",
+      "intensity" : {
+        "r" : 0.1,
+        "g" : 1,
+        "b" : 0.3
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
       }
     }
   ]

@@ -1,12 +1,12 @@
 {
   "scenes" : [
   	{
-  		"name" : "Scene 1",
+  		"name" : "Graveyard",
   		"source" : "scenes/scene1.json"
   	},
 
   	{
-  		"name" : "Scene 2",
+  		"name" : "Pumpkin Hill",
   		"source" : "scenes/scene2.json"
   	}
   ]

@@ -1,31 +1,11 @@
 {
   "meshes" : [
     {
-      "source" : "monkey.obj",
+      "source" : "book.obj",
       "position" : {
         "x" : 0,
         "y" : 0,
         "z" : 0
-      },
-      "rotation" : 45,
-      "axis" : {
-        "x" : 0,
-        "y" : 1,
-        "z" : 0
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "box.obj", // A changer
-      "position" : {
-        "x" : 0,
-        "y" : 0,
-        "z" : -5
       },
       "rotation" : 0,
       "axis" : {
@@ -38,12 +18,52 @@
         "y" : 1,
         "z" : 1
       }
+    },
+
+    {
+      "source" : "hill.obj",
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 0
+      },
+      "rotation" : 45,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 2,
+        "y" : 2,
+        "z" : 2
+      }
+    },
+
+    {
+      "source" : "pumpkin1.obj",
+      "position" : {
+        "x" : 1,
+        "y" : 1,
+        "z" : 2
+      },
+      "rotation" : 45,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.5,
+        "y" : 0.5,
+        "z" : 0.5
+      }
     }
   ],
 
   "camera" : {
     "distanceToCenter" : {
-      "base" : 5,
+      "base" : 7,
       "min" : 2,
       "max" : 7
     },
@@ -51,5 +71,44 @@
       "x" : -45,
       "y" : 45
     }
-  }
+  },
+
+  "lights" : [
+    {
+      "type" : "ambient",
+      "intensity" : {
+        "r" : 0.2,
+        "g" : 0.3,
+        "b" : 0.5
+      }
+    },
+
+    {
+      "type" : "directional",
+      "intensity" : {
+        "r" : 1,
+        "g" : 1,
+        "b" : 1
+      },
+      "direction" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : -1
+      }
+    },
+
+    {
+      "type" : "point",
+      "intensity" : {
+        "r" : 1,
+        "g" : 0.7,
+        "b" : 0.3
+      },
+      "position" : {
+        "x" : 1,
+        "y" : 1.5,
+        "z" : 2
+      }
+    }
+  ]
 }
