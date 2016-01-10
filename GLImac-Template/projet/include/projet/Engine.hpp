@@ -35,7 +35,7 @@ namespace Projet
 		bool initScenes(const char* filename);	// Initialize the scenes
 		void renderScene();											// Render the current scene
 		bool userEvents();									// Event loop
-		bool keyboardEvents(SDL_Event e);									// Keyboard event (return value for alt+f4)
+		void keyboardEvents(SDL_Event e);									// Keyboard event (return value for alt+f4)
 		void mouseEvents(SDL_Event e);											// Mouse events
 
 		glimac::SDLWindowManager* _WindowManager;

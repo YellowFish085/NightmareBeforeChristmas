@@ -174,7 +174,7 @@ namespace Projet
 		return quit;
 	}
 
-	bool AppEngine::keyboardEvents(SDL_Event e)
+	void AppEngine::keyboardEvents(SDL_Event e)
 	{
 		switch (e.key.keysym.sym) {
 		case SDLK_LEFT:
@@ -183,9 +183,9 @@ namespace Projet
 		case SDLK_RIGHT:
 			_SceneId = ((_SceneId >= _Scenes.size()-1) ? _SceneId : _SceneId+1);
 			break;
-	}
+		}
 
-	std::cout << _SceneId << std::endl;
+		std::cout << _SceneId << std::endl;
 	}
 
 	void AppEngine::mouseEvents(SDL_Event e)
