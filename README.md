@@ -27,6 +27,8 @@ Le dossier du projet est le dossier *GLImac-Template/dev*.
 
 L'ensemble des *.hpp* et *.cpp* sur lesquels nous avons travaillé sont dans *GLImac-Template/projet*.
 
+Le dossier *assets* contient les fichiers pour les scènes, les fichiers 3D et les textures.
+
 ## Libraries
 
 Jsoncpp (http://jsoncpp.sourceforge.net/) a été utilisé pour charger les fichiers JSON dans lesquels nous indiquons la structure des scènes.
