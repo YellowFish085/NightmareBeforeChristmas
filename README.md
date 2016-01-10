@@ -2,14 +2,29 @@
 
 ## Installation
 
-1. Cloner le repository
-2. *(Optionel, si Assimp non installé sur la machine)* Dans le dossier *GLImac-Template/assimp*, lancer les commandes suivantes (la dernière n'est peut-être pas obligatoire) :
+1. Cloner le repository.
+2. *(Optionel, si Assimp non installé sur la machine)* Dans le dossier *GLImac-Template/assimp*, lancer les commandes suivantes :
 
   > $ cmake ./
   
   > $ make
 
   > $ updatedb 
+  
+3. Créer un dossier de build (ici nous crerons un dossier *build* au même niveau que le dossier *GLImac-Template*).
+4. Dans le dossier créé, faire un cmake du dossier *GLImac-Template*. Exemple ici dans notre dossier *build* :
+
+  > $ cd /build
+  
+  > $ cmake ../GLImac-Template
+  
+  > $ make
+  
+5. Pour lancer l'application, lancer le fichier *dev_main*. Exemple ici dans notre dossier *build* :
+
+  > $ cd /build
+  
+  > $ ./dev/dev_main
 
 ## Utilisation
 
