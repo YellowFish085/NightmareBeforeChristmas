@@ -1,13 +1,18 @@
 {
   "scenes" : [
   	{
+  		"name" : "Intro",
+  		"source" : "scenes/scene3.json"
+  	},
+
+  	{
   		"name" : "Graveyard",
   		"source" : "scenes/scene1.json"
   	},
 
-  	{
-  		"name" : "Pumpkin Hill",
-  		"source" : "scenes/scene2.json"
-  	}
+    {
+      "name" : "Pumpkin Hill",
+      "source" : "scenes/scene2.json"
+    }
   ]
 }

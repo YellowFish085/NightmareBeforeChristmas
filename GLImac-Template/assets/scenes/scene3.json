@@ -21,13 +21,153 @@
     },
 
     {
-      "source" : "graveyard.obj",
+      "source" : "pumpkin1.obj",
       "position" : {
         "x" : 0,
         "y" : 0,
-        "z" : 0
+        "z" : 2
       },
       "rotation" : 0,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 2,
+        "y" : 2,
+        "z" : 2
+      }
+    },
+
+    {
+      "source" : "pumpkin1.obj",
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 4.5
+      },
+      "rotation" : 10,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.6,
+        "y" : 0.6,
+        "z" : 0.6
+      }
+    },
+
+    {
+      "source" : "pumpkin1.obj",
+      "position" : {
+        "x" : 3.5,
+        "y" : 0,
+        "z" : 4
+      },
+      "rotation" : 20,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.6,
+        "y" : 0.6,
+        "z" : 0.6
+      }
+    },
+
+    {
+      "source" : "pumpkin1.obj",
+      "position" : {
+        "x" : -3.5,
+        "y" : 0,
+        "z" : 3.8
+      },
+      "rotation" : -35,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.6,
+        "y" : 0.6,
+        "z" : 0.6
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : -4,
+        "y" : 0,
+        "z" : 3
+      },
+      "rotation" : -40,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.6,
+        "y" : 0.6,
+        "z" : 0.6
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : -3,
+        "y" : 0,
+        "z" : -1
+      },
+      "rotation" : -15,
+      "axis" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 1
+      },
+      "scale" : {
+        "x" : 0.6,
+        "y" : 0.6,
+        "z" : 0.6
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : 4,
+        "y" : 0,
+        "z" : 3
+      },
+      "rotation" : 10,
+      "axis" : {
+        "x" : 0,
+        "y" : 1,
+        "z" : 0
+      },
+      "scale" : {
+        "x" : 0.7,
+        "y" : 0.7,
+        "z" : 0.7
+      }
+    },
+
+    {
+      "source" : "pumpkin1.obj",
+      "position" : {
+        "x" : 2.8,
+        "y" : 0,
+        "z" : 2
+      },
+      "rotation" : 45,
       "axis" : {
         "x" : 0,
         "y" : 1,
@@ -43,120 +183,20 @@
     {
       "source" : "tomb1.obj",
       "position" : {
-        "x" : -2.5,
-        "y" : 0,
-        "z" : -2
-      },
-      "rotation" : 0,
-      "axis" : {
-        "x" : 0,
-        "y" : 1,
-        "z" : 0
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "tomb1.obj",
-      "position" : {
-        "x" : -1,
-        "y" : -0.01,
-        "z" : -2
-      },
-      "rotation" : 12,
-      "axis" : {
-        "x" : 0,
-        "y" : 0,
-        "z" : 1
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "tomb1.obj",
-      "position" : {
-        "x" : -2.5,
-        "y" : 0,
-        "z" : -1
-      },
-      "rotation" : 0,
-      "axis" : {
-        "x" : 0,
-        "y" : 1,
-        "z" : 0
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "tomb1.obj",
-      "position" : {
-        "x" : 1.5,
-        "y" : 0,
-        "z" : -1
-      },
-      "rotation" : 0,
-      "axis" : {
-        "x" : 0,
-        "y" : 1,
-        "z" : 0
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "tomb1.obj",
-      "position" : {
-        "x" : 1.8,
+        "x" : -3.2,
         "y" : 0,
         "z" : 2
       },
-      "rotation" : -10,
+      "rotation" : -25,
       "axis" : {
         "x" : 0,
         "y" : 1,
-        "z" : 0
+        "z" : -1
       },
       "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
-      }
-    },
-
-    {
-      "source" : "tomb1.obj",
-      "position" : {
-        "x" : 0.5,
-        "y" : 0,
-        "z" : 2.8
-      },
-      "rotation" : 10,
-      "axis" : {
-        "x" : 0,
-        "y" : 0,
+        "x" : 1,
+        "y" : 1,
         "z" : 1
-      },
-      "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
       }
     },
 
@@ -165,7 +205,27 @@
       "position" : {
         "x" : -2,
         "y" : 0,
-        "z" : 3
+        "z" : -2
+      },
+      "rotation" : 25,
+      "axis" : {
+        "x" : 0,
+        "y" : 0,
+        "z" : 1
+      },
+      "scale" : {
+        "x" : 2,
+        "y" : 2,
+        "z" : 2
+      }
+    },
+
+    {
+      "source" : "tomb1.obj",
+      "position" : {
+        "x" : 2,
+        "y" : 0,
+        "z" : -2
       },
       "rotation" : -25,
       "axis" : {
@@ -174,22 +234,22 @@
         "z" : 1
       },
       "scale" : {
-        "x" : 0.5,
-        "y" : 0.5,
-        "z" : 0.5
+        "x" : 2,
+        "y" : 2,
+        "z" : 2
       }
     }
   ],
 
   "camera" : {
     "distanceToCenter" : {
-      "base" : 7,
+      "base" : 10,
       "min" : 5,
       "max" : 15
     },
     "angle" : {
-      "x" : -45,
-      "y" : 45
+      "x" : 0,
+      "y" : 25
     }
   },
 
@@ -207,8 +267,8 @@
       "type" : "directional",
       "intensity" : {
         "r" : 1,
-        "g" : 1,
-        "b" : 1
+        "g" : 0.7,
+        "b" : 0.3
       },
       "direction" : {
         "x" : 0,
@@ -220,14 +280,28 @@
     {
       "type" : "point",
       "intensity" : {
-        "r" : 0.1,
-        "g" : 1,
+        "r" : 1,
+        "g" : 0.7,
         "b" : 0.3
       },
       "position" : {
         "x" : 0,
-        "y" : 1,
-        "z" : 0
+        "y" : 2,
+        "z" : 5
+      }
+    },
+
+    {
+      "type" : "point",
+      "intensity" : {
+        "r" : 0.1,
+        "g" : 1,
+        "b" : 0.4
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 2,
+        "z" : -2
       }
     }
   ]
